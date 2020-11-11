@@ -29,6 +29,9 @@ public class ServiceRedaction implements ServiceRedactionLocal {
 
     @Override
     public void creerArticle(String nomArticle, ArrayList<String> motClefs, String contenu, String auteur) {
+        Article art = new Article(nomArticle, motClefs, contenu, auteur);
+        
+        //envoyerArticle(art);
     }
 
     @Override
