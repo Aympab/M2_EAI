@@ -5,6 +5,8 @@
  */
 package fr.miage.millan.services;
 
+import fr.miage.millan.entities.Article;
+import java.util.ArrayList;
 import javax.ejb.Local;
 
 /**
@@ -13,5 +15,11 @@ import javax.ejb.Local;
  */
 @Local
 public interface ServiceRedactionLocal {
+    public void creerArticle(String nomArticle, ArrayList<String> motClefs, String contenu, String auteur);
+
+   
+    public void envoyerArticle(Article article);
     
 }
+
+
