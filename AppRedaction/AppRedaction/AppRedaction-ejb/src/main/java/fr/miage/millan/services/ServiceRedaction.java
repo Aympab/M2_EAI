@@ -26,12 +26,17 @@ import javax.naming.NamingException;
  */
 @Stateless
 public class ServiceRedaction implements ServiceRedactionLocal {
+    //Id a incrémenter à chaque création
+    private static long idCreation = 1;
 
     @Override
     public void creerArticle(String nomArticle, ArrayList<String> motClefs, String contenu, String auteur) {
         Article art = new Article(nomArticle, motClefs, contenu, auteur);
         
         //envoyerArticle(art);
+        
+        
+        ServiceRedaction.idCreation++;
     }
 
     @Override
@@ -98,6 +103,10 @@ public class ServiceRedaction implements ServiceRedactionLocal {
                 }
             }
         }
+    }
+
+    @Override
+    public void selectionnerArticles(ArrayList<Article> listArticles) {
     }
 
 }
