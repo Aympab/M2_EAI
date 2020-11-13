@@ -15,10 +15,16 @@ import javax.ejb.Local;
  */
 @Local
 public interface ServiceRedactionLocal {
+    
     public void creerArticle(String nomArticle, ArrayList<String> motClefs, String contenu, String auteur);
 
-   
-    public void envoyerArticle(Article article);
+   //Envoie la liste d'article en attente
+    public void envoyerListeArticles();
+    
+    //Selectionne un article pour l'ajouter à la liste d'attente
+    public void selectionnerArticles(Article art);
+    
+    public ArrayList<Article> getArticles();
     
 }
 

@@ -28,20 +28,30 @@ import javax.naming.NamingException;
 public class ServiceRedaction implements ServiceRedactionLocal {
     //Id a incrémenter à chaque création
     private static long idCreation = 1;
+    private static ArrayList<Article> articlesAEnvoyer = new ArrayList<Article>();
+    private static ArrayList<Article> bdArticle = new ArrayList<Article>();
 
+    
+    
     @Override
     public void creerArticle(String nomArticle, ArrayList<String> motClefs, String contenu, String auteur) {
         Article art = new Article(nomArticle, motClefs, contenu, auteur);
+        art.setId(idCreation);      
         
-        //envoyerArticle(art);
-        
+        bdArticle.add(art);
         
         ServiceRedaction.idCreation++;
     }
 
     @Override
-    @SuppressWarnings("CallToPrintStackTrace")
-    public void envoyerArticle(Article article) {
+    public void selectionnerArticles(Article art){
+//        Article art =        
+        
+        articlesAEnvoyer.add(art);
+    }    
+    
+    @Override
+    public void envoyerListeArticles() {
         Context context = null;
         ConnectionFactory factory = null;
         Connection connection = null;
@@ -79,7 +89,7 @@ public class ServiceRedaction implements ServiceRedactionLocal {
             //TitreBoursier titreBoursier = new TitreBoursier("GOOG", "Google Inc.");
 
             ObjectMessage object = session.createObjectMessage();
-            object.setObject((Serializable) article);
+            object.setObject((Serializable)articlesAEnvoyer);
             sender.send(object);
 
         } catch (JMSException | NamingException exception) {
@@ -106,7 +116,23 @@ public class ServiceRedaction implements ServiceRedactionLocal {
     }
 
     @Override
-    public void selectionnerArticles(ArrayList<Article> listArticles) {
+    public ArrayList<Article> getArticles() {
+        return ServiceRedaction.bdArticle;
     }
+
+    public ServiceRedaction() {
+        ArrayList<String> motsClefs = new ArrayList<>();
+        motsClefs.add("cool");
+        motsClefs.add("politique");
+        
+        creerArticle("ArticleTITLE", motsClefs, "Le CONTENU DE LARTICLE", "AuteurDELARTICLE");
+        
+        motsClefs = new ArrayList<>();
+        motsClefs.add("Avion");
+        motsClefs.add("Bateau");
+        creerArticle("ArticleTITLE", motsClefs, "Le CONTENU DE LARTICLE", "AuteurDELARTICLE");
+    }
+
+
 
 }
