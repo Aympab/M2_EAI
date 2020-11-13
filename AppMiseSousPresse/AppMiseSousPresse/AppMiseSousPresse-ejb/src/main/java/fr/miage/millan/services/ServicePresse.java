@@ -68,7 +68,7 @@ public class ServicePresse implements ServicePresseLocal {
                 ObjectMessage object = (ObjectMessage) message;
                 
                 Article a = (Article) object.getObject();
-                System.out.println(a.toString());
+                System.out.println(a.getContenu());
             } else if (message != null) {
                 System.out.println("Received non text message");
             }
