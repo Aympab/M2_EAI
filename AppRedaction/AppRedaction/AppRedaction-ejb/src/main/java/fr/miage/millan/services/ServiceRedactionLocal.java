@@ -21,8 +21,12 @@ public interface ServiceRedactionLocal {
    //Envoie la liste d'article en attente
     public void envoyerListeArticles();
     
-    //Selectionne un article pour l'ajouter à la liste d'attente
-    public void selectionnerArticles(Article art);
+    /**
+     * Permet d'ajouter des articles qui sont dans la "bdArticle" vers la liste d'articles à envoyer.
+     * @param idArticleSelectionne L'id de l'article qu'on veut ajouter à la liste d'articles à envoyer
+     * @return la liste des articles à envoyer mise à jour
+     */
+    public ArrayList<Article> selectionnerArticles(Long idArticleSelectionne);
     
     public ArrayList<Article> getArticles();
     

@@ -40,9 +40,8 @@ public class ClientLegerAppRedaction {
     }
 
     @WebMethod(operationName = "selectionnerArticles")
-    @Oneway
-    public void selectionnerArticles(@WebParam(name = "art") Article art) {
-        ejbRef.selectionnerArticles(art);
+    public ArrayList<Article> selectionnerArticles(@WebParam(name = "idArticleSelectionne") Long idArticleSelectionne) {
+        return ejbRef.selectionnerArticles(idArticleSelectionne);
     }
 
     @WebMethod(operationName = "getArticles")

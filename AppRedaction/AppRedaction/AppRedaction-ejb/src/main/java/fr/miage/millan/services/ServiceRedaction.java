@@ -9,6 +9,7 @@ import fr.miage.millan.entities.Article;
 import java.util.ArrayList;
 import javax.ejb.Stateless;
 import java.io.Serializable;
+import java.util.Iterator;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.jms.Destination;
@@ -26,30 +27,37 @@ import javax.naming.NamingException;
  */
 @Stateless
 public class ServiceRedaction implements ServiceRedactionLocal {
+
     //Id a incrémenter à chaque création
     private static long idCreation = 1;
     private static ArrayList<Article> articlesAEnvoyer = new ArrayList<Article>();
     private static ArrayList<Article> bdArticle = new ArrayList<Article>();
 
-    
-    
     @Override
     public void creerArticle(String nomArticle, ArrayList<String> motClefs, String contenu, String auteur) {
         Article art = new Article(nomArticle, motClefs, contenu, auteur);
-        art.setId(idCreation);      
-        
+        art.setId(idCreation);
+
         bdArticle.add(art);
-        
+
         ServiceRedaction.idCreation++;
     }
 
     @Override
-    public void selectionnerArticles(Article art){
-//        Article art =        
-        
-        articlesAEnvoyer.add(art);
-    }    
-    
+    public ArrayList<Article> selectionnerArticles(Long idArticleSelectionne) {
+        Article art;
+
+        Iterator ite = bdArticle.iterator();
+        while (ite.hasNext()) {
+            art = (Article)ite.next();
+            if(art.getId() == idArticleSelectionne){
+                articlesAEnvoyer.add(art);
+                break;
+            }
+        }
+        return articlesAEnvoyer;
+    }
+
     @Override
     public void envoyerListeArticles() {
         Context context = null;
@@ -85,11 +93,9 @@ public class ServiceRedaction implements ServiceRedactionLocal {
             // start the connection, to enable message sends
             connection.start();
 
-            
             //TitreBoursier titreBoursier = new TitreBoursier("GOOG", "Google Inc.");
-
             ObjectMessage object = session.createObjectMessage();
-            object.setObject((Serializable)articlesAEnvoyer);
+            object.setObject((Serializable) articlesAEnvoyer);
             sender.send(object);
 
         } catch (JMSException | NamingException exception) {
@@ -124,15 +130,13 @@ public class ServiceRedaction implements ServiceRedactionLocal {
         ArrayList<String> motsClefs = new ArrayList<>();
         motsClefs.add("cool");
         motsClefs.add("politique");
-        
+
         creerArticle("ArticleTITLE", motsClefs, "Le CONTENU DE LARTICLE", "AuteurDELARTICLE");
-        
+
         motsClefs = new ArrayList<>();
         motsClefs.add("Avion");
         motsClefs.add("Bateau");
         creerArticle("ArticleTITLE", motsClefs, "Le CONTENU DE LARTICLE", "AuteurDELARTICLE");
     }
-
-
 
 }
