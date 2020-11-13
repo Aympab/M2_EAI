@@ -7,6 +7,10 @@ package fr.miage.millan.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import javax.ejb.ActivationConfigProperty;
+import javax.ejb.MessageDriven;
+import javax.jms.Message;
+import javax.jms.MessageListener;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +27,9 @@ public class Article implements Serializable {
     ArrayList<String> motClefs;
     String contenu;
     String auteur;
+
+    public Article() {
+    }
     
     //
     //
