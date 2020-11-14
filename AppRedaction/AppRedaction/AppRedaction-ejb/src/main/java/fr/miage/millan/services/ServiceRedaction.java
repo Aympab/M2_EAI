@@ -96,6 +96,13 @@ public class ServiceRedaction implements ServiceRedactionLocal {
             //TitreBoursier titreBoursier = new TitreBoursier("GOOG", "Google Inc.");
             ObjectMessage object = session.createObjectMessage();
             object.setObject((Serializable) articlesAEnvoyer);
+            
+//            System.out.println("FROM SERVICE REDAC");
+//                Iterator ite = articlesAEnvoyer.iterator();
+//                while(ite.hasNext()){
+//                    System.out.println(((Article)ite.next()).getContenu());
+//                }
+            
             sender.send(object);
 
         } catch (JMSException | NamingException exception) {
@@ -118,6 +125,9 @@ public class ServiceRedaction implements ServiceRedactionLocal {
                     exception.printStackTrace();
                 }
             }
+            
+            //Vider la liste des trucs à envoyer
+            ServiceRedaction.articlesAEnvoyer.clear();
         }
     }
 
@@ -136,7 +146,7 @@ public class ServiceRedaction implements ServiceRedactionLocal {
         motsClefs = new ArrayList<>();
         motsClefs.add("Avion");
         motsClefs.add("Bateau");
-        creerArticle("ArticleTITLE", motsClefs, "Le CONTENU DE LARTICLE", "AuteurDELARTICLE");
+        creerArticle("ArticleTITLE", motsClefs, "Le CONTENU DU DEUXIEME ARTICLE", "AuteurDU DEUXIEME ARTICLE");
     }
 
 }
