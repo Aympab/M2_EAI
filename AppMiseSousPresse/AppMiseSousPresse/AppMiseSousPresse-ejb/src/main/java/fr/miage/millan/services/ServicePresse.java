@@ -9,6 +9,9 @@ import fr.miage.millan.entities.Article;
 import java.util.ArrayList;
 import javax.ejb.Stateless;
 import java.io.Serializable;
+import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.jms.Destination;
@@ -17,6 +20,7 @@ import javax.jms.ConnectionFactory;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageConsumer;
+import javax.jms.MessageListener;
 import javax.jms.Session;
 import javax.jms.ObjectMessage;
 import javax.naming.NamingException;
@@ -27,6 +31,7 @@ import javax.naming.NamingException;
  */
 @Stateless
 public class ServicePresse implements ServicePresseLocal {
+
     @Override
     public void testReceiver() {
         Context context = null;
@@ -38,7 +43,6 @@ public class ServicePresse implements ServicePresseLocal {
         int count = 5;
         Session session = null;
         MessageConsumer receiver = null;
-
 
         try {
             // create the JNDI initial context
@@ -55,7 +59,7 @@ public class ServicePresse implements ServicePresseLocal {
 
             // create the session
             session = connection.createSession(
-                false, Session.AUTO_ACKNOWLEDGE);
+                    false, Session.AUTO_ACKNOWLEDGE);
 
             // create the receiver
             receiver = session.createConsumer(dest);
@@ -66,13 +70,19 @@ public class ServicePresse implements ServicePresseLocal {
             Message message = receiver.receive();
             if (message instanceof ObjectMessage) {
                 ObjectMessage object = (ObjectMessage) message;
+
+                //TODO : Changer les dingueries ici
+                ArrayList<Article> a = (ArrayList<Article>) object.getObject();
                 
-                Article a = (Article) object.getObject();
-                System.out.println(a.getContenu());
+                Iterator ite = a.iterator();
+                while (ite.hasNext()) {
+                    System.out.println(((Article) ite.next()).getContenu());
+                }
+              
             } else if (message != null) {
                 System.out.println("Received non text message");
             }
-            
+
         } catch (JMSException exception) {
             exception.printStackTrace();
         } catch (NamingException exception) {
@@ -97,4 +107,30 @@ public class ServicePresse implements ServicePresseLocal {
             }
         }
     }
+
+//    @Override
+//    public void onMessage(Message message) {
+//        if (message instanceof ObjectMessage) {
+//            try {
+//                ObjectMessage object = (ObjectMessage) message;
+//
+//                //TODO : Changer les dingueries ici
+//                ArrayList<Article> a = (ArrayList<Article>) object.getObject();
+////                System.out.println(a.get(0).getContenu());
+//
+//                System.out.println("SIZE : " + a.size());
+//
+//                Iterator ite = a.iterator();
+//                while (ite.hasNext()) {
+//                    System.out.println(((Article) ite.next()).getContenu());
+//                }
+//            } catch (JMSException ex) {
+//                Logger.getLogger(ServicePresse.class.getName()).log(Level.SEVERE, null, ex);
+//                System.out.println("ON A TRIGEER LE CATCH");
+//            }
+//        } else if (message != null) {
+//            System.out.println("Received non text message");
+//        }
+//
+//    }
 }
