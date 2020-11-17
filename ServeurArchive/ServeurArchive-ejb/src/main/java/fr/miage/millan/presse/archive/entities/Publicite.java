@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.miage.millan.entities;
+package fr.miage.millan.presse.archive.entities;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
