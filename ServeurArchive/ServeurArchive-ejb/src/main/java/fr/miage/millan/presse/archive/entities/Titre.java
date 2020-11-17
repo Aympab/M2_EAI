@@ -18,14 +18,12 @@ import javax.persistence.OneToMany;
  * @author aympa
  */
 @Entity
-public class Article implements Serializable {
-
+public class Titre implements Serializable {
     //ATTRIBUTS
     private String nom;
-    private ArrayList<String> motsClefs;
-    private String contenu;
-    private String auteur;
     
+    @OneToMany
+    private ArrayList<Volume> listeVolumes;
     
     //JEE
     private static final long serialVersionUID = 1L;
@@ -51,10 +49,10 @@ public class Article implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Article)) {
+        if (!(object instanceof Titre)) {
             return false;
         }
-        Article other = (Article) object;
+        Titre other = (Titre) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -63,11 +61,12 @@ public class Article implements Serializable {
 
     @Override
     public String toString() {
-        return "fr.miage.millan.entities.Article[ id=" + id + " ]";
+        return "fr.miage.millan.presse.archive.entities.Titre[ id=" + id + " ]";
     }
+ 
     
     
-    //GET & SET
+    //GETTERS & SETTERS
 
     public String getNom() {
         return nom;
@@ -77,29 +76,12 @@ public class Article implements Serializable {
         this.nom = nom;
     }
 
-    public ArrayList<String> getMotsClefs() {
-        return motsClefs;
+    public ArrayList<Volume> getListeVolumes() {
+        return listeVolumes;
     }
 
-    public void setMotsClefs(ArrayList<String> motsClefs) {
-        this.motsClefs = motsClefs;
+    public void setListeVolumes(ArrayList<Volume> listeVolumes) {
+        this.listeVolumes = listeVolumes;
     }
-
-    public String getContenu() {
-        return contenu;
-    }
-
-    public void setContenu(String contenu) {
-        this.contenu = contenu;
-    }
-
-    public String getAuteur() {
-        return auteur;
-    }
-
-    public void setAuteur(String auteur) {
-        this.auteur = auteur;
-    }
-    
     
 }

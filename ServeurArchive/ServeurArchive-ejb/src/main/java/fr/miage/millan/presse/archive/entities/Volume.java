@@ -18,15 +18,17 @@ import javax.persistence.OneToMany;
  * @author aympa
  */
 @Entity
-public class Article implements Serializable {
-
+public class Volume implements Serializable {
+    
     //ATTRIBUTS
-    private String nom;
-    private ArrayList<String> motsClefs;
-    private String contenu;
-    private String auteur;
+    private int numero;
     
+    @OneToMany
+    private ArrayList<Article> listeArticles;
     
+    @OneToMany
+    private ArrayList<Publicite> listePublicites;
+
     //JEE
     private static final long serialVersionUID = 1L;
     @Id
@@ -51,10 +53,10 @@ public class Article implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Article)) {
+        if (!(object instanceof Volume)) {
             return false;
         }
-        Article other = (Article) object;
+        Volume other = (Volume) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -63,43 +65,33 @@ public class Article implements Serializable {
 
     @Override
     public String toString() {
-        return "fr.miage.millan.entities.Article[ id=" + id + " ]";
+        return "fr.miage.millan.presse.archive.entities.Volume[ id=" + id + " ]";
     }
     
-    
-    //GET & SET
+    //GETTERS & SETTERS
 
-    public String getNom() {
-        return nom;
+    public int getNumero() {
+        return numero;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 
-    public ArrayList<String> getMotsClefs() {
-        return motsClefs;
+    public ArrayList<Article> getListeArticles() {
+        return listeArticles;
     }
 
-    public void setMotsClefs(ArrayList<String> motsClefs) {
-        this.motsClefs = motsClefs;
+    public void setListeArticles(ArrayList<Article> listeArticles) {
+        this.listeArticles = listeArticles;
     }
 
-    public String getContenu() {
-        return contenu;
+    public ArrayList<Publicite> getListePublicites() {
+        return listePublicites;
     }
 
-    public void setContenu(String contenu) {
-        this.contenu = contenu;
+    public void setListePublicites(ArrayList<Publicite> listePublicites) {
+        this.listePublicites = listePublicites;
     }
-
-    public String getAuteur() {
-        return auteur;
-    }
-
-    public void setAuteur(String auteur) {
-        this.auteur = auteur;
-    }
-    
     
 }
