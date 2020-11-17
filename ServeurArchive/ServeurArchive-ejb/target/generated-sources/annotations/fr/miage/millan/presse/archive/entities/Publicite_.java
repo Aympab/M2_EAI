@@ -1,0 +1,15 @@
+package fr.miage.millan.presse.archive.entities;
+
+import javax.annotation.Generated;
+import javax.persistence.metamodel.SingularAttribute;
+import javax.persistence.metamodel.StaticMetamodel;
+
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-11-17T21:16:46")
+@StaticMetamodel(Publicite.class)
+public class Publicite_ { 
+
+    public static volatile SingularAttribute<Publicite, Integer> idpublicite;
+    public static volatile SingularAttribute<Publicite, String> nom;
+    public static volatile SingularAttribute<Publicite, String> contenu;
+
+}
