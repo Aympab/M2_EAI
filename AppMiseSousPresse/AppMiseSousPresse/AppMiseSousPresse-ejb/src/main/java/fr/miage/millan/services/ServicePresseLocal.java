@@ -14,5 +14,5 @@ import javax.ejb.Local;
 @Local
 public interface ServicePresseLocal {
 
-    public void testReceiver();
+    public void recupererArticle();
 }

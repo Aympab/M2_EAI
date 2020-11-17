@@ -24,10 +24,10 @@ public class ClientWebAppMiseSousPresse {
     private ServicePresseLocal ejbRef;// Add business logic below. (Right-click in editor and choose
     // "Web Service > Add Operation"
 
-    @WebMethod(operationName = "testReceiver")
+    @WebMethod(operationName = "recupererArticle")
     @Oneway
     public void testReceiver() {
-        ejbRef.testReceiver();
+        ejbRef.recupererArticle();
     }
     
 }

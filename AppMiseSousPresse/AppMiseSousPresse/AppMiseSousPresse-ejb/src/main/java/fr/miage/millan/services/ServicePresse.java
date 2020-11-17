@@ -33,7 +33,7 @@ import javax.naming.NamingException;
 public class ServicePresse implements ServicePresseLocal {
 
     @Override
-    public void testReceiver() {
+    public void recupererArticle() {
         Context context = null;
         ConnectionFactory factory = null;
         Connection connection = null;
