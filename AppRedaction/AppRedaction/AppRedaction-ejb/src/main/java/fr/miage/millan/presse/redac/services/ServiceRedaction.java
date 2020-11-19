@@ -76,6 +76,8 @@ public class ServiceRedaction implements ServiceRedactionLocal {
         } catch (NamingException ex) {
             Logger.getLogger(ServiceRedaction.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        articlesAEnvoyer.clear();
     }
 
     @Override

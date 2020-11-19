@@ -26,6 +26,11 @@
             <version>1.0</version>
         </dependency>
         <dependency>
+            <groupId>fr.miage.millan.presse</groupId>
+            <artifactId>SharedPubPresse</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>7.0</version>

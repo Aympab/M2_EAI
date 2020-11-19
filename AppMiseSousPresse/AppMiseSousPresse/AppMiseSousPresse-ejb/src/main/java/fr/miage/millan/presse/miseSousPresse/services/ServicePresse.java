@@ -6,26 +6,15 @@
 package fr.miage.millan.presse.miseSousPresse.services;
 
 import fr.miage.millan.presse.miseSousPresse.jms.SenderNotification;
+import fr.miage.millan.presse.sharedpubpresse.objects.Publicite;
 import fr.miage.millan.presse.sharedredactionpresse.objects.Article;
 import java.util.ArrayList;
 import javax.ejb.Stateless;
-import java.io.Serializable;
-import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.jms.Destination;
-import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.MessageConsumer;
-import javax.jms.MessageListener;
-import javax.jms.MessageProducer;
-import javax.jms.Session;
-import javax.jms.ObjectMessage;
 import javax.naming.NamingException;
 
 /**
@@ -40,14 +29,13 @@ public class ServicePresse implements ServicePresseLocal {
 
 //    @Resource(mappedName = "ARTICLE_INITFactory")
 //    private ConnectionFactory aRTICLE_INITFactory;
-
     private final SenderNotification sender = new SenderNotification();
 
     @Override
     public void notifierAppRedac() {
         try {
 
-            sender.sendJMSMessageToPRESSE_NOTIF_REDAC(new String("NOTIFICATION NOUVEAUX TRUCS"));
+            sender.sendJMSMessageToPRESSE_NOTIF_REDAC(new String("LE VOLUME + NOM VOLUME + EST TERMINE"));
 
         } catch (JMSException ex) {
             Logger.getLogger(ServicePresse.class.getName()).log(Level.SEVERE, null, ex);
@@ -61,6 +49,13 @@ public class ServicePresse implements ServicePresseLocal {
     public void traiterArticles(ArrayList<Article> listeArt) {
         for (Article a : listeArt) {
             System.out.println("APP PRESSE - CONTENU ARTICLE : " + a.getContenu());
+        }
+    }
+
+    @Override
+    public void recupererPub(ArrayList<Publicite> listePub) {
+        for (Publicite a : listePub) {
+            System.out.println("APP PRESSE - CONTENU PUB : " + a.getNom() + " - " + a.getContenu() );
         }
     }
 

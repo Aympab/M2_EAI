@@ -5,7 +5,7 @@
  */
 package fr.miage.millan.presse.appPub.services;
 
-import fr.miage.millan.presse.appPub.entites.Publicite;
+import fr.miage.millan.presse.sharedpubpresse.objects.Publicite;
 import java.util.ArrayList;
 import javax.ejb.Local;
 
