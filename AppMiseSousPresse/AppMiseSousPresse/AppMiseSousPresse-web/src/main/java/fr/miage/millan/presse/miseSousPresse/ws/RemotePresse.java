@@ -36,4 +36,10 @@ public class RemotePresse {
         ejbRef.notifierAppRedac();
     }
     
+    @WebMethod(operationName = "printAllStock")
+    @Oneway
+    public void printAllStock() {
+        ejbRef.printAllStock();
+    }
+    
 }

@@ -33,7 +33,7 @@ public class ServiceRedaction implements ServiceRedactionLocal {
     SenderArticles sender = new SenderArticles();
 
     //Id a incrémenter à chaque création
-    private static long idCreation = 1;
+    private static int idCreation = 1;
     private static final ArrayList<Article> articlesAEnvoyer = new ArrayList<Article>();
     private static final ArrayList<Article> bdArticle = new ArrayList<Article>();
 

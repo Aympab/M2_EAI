@@ -29,5 +29,7 @@ public interface ServicePresseLocal {
      */
     public void recupererPub(ArrayList<Publicite> listePub);
     
+    public void printAllStock();
+    
 //    public void transfererVolumeVersDistrib(Volume v);
 }

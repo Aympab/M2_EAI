@@ -12,6 +12,8 @@ import java.io.Serializable;
  * @author aympa
  */
 public class Publicite implements Serializable {
+    private int idPub;
+    
     private String nom;
     private String contenu;
 
@@ -35,6 +37,16 @@ public class Publicite implements Serializable {
     public void setContenu(String contenu) {
         this.contenu = contenu;
     }
+
+    public int getIdPub() {
+        return idPub;
+    }
+
+    public void setIdPub(int idPub) {
+        this.idPub = idPub;
+    }
+    
+    
     
     
 }

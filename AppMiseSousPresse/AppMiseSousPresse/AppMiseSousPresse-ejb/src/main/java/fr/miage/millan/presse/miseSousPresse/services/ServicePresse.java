@@ -5,6 +5,7 @@
  */
 package fr.miage.millan.presse.miseSousPresse.services;
 
+import fr.miage.millan.presse.miseSousPresse.entities.SimulationStockage;
 import fr.miage.millan.presse.miseSousPresse.jms.SenderNotification;
 import fr.miage.millan.presse.sharedpubpresse.objects.Publicite;
 import fr.miage.millan.presse.sharedredactionpresse.objects.Article;
@@ -48,15 +49,34 @@ public class ServicePresse implements ServicePresseLocal {
     @Override
     public void traiterArticles(ArrayList<Article> listeArt) {
         for (Article a : listeArt) {
-            System.out.println("APP PRESSE - CONTENU ARTICLE : " + a.getContenu());
+            System.out.println("APP PRESSE - ARTICLE ENREGISTRE :\nCONTENU ARTICLE : " + a.getContenu());
+            SimulationStockage.ajouterArticle(a);
         }
     }
 
     @Override
     public void recupererPub(ArrayList<Publicite> listePub) {
         for (Publicite a : listePub) {
-            System.out.println("APP PRESSE - CONTENU PUB : " + a.getNom() + " - " + a.getContenu() );
+            System.out.println("APP PRESSE - PUB ENREGISTREE :\n" + a.getNom() + " - " + a.getContenu());
+            SimulationStockage.ajouterPub(a);
         }
+    }
+
+    @Override
+    public void printAllStock() {
+        System.out.println("APPSOUSPRESSE - PRINT ALL STOCK");
+        System.out.println("\n\tPUBS :");
+
+        for (Publicite p : SimulationStockage.getStockPub()) {
+            System.out.println("\t\tID" + p.getIdPub() + "\n\t\t\t" + p.getNom() + " - " + p.getContenu());
+        }
+
+        System.out.println("\n\tARTICLES :");
+        for (Article a : SimulationStockage.getStockArticle()) {
+            System.out.println("\t\tID:" + a.getId() + "\n\t\t\t" + a.getAuteur() + " - " + a.getNom() + " - " + a.getContenu());
+        }
+        
+        System.out.println("\nAPPSOUSPRESSE - FIN DU STOCK");
     }
 
 }
