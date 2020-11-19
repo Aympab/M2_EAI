@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.miage.millan.presse.redac.mdb;
+package fr.miage.millan.presse.redac.jms;
 
 import fr.miage.millan.presse.redac.services.ServiceRedaction;
 import java.util.logging.Level;
@@ -33,23 +33,23 @@ public class RecepteurNotification implements MessageListener {
     @Override
     public void onMessage(Message message) {
         
-        this.metier.traiterNotification();
+//        this.metier.traiterNotification();
         
-//        if (message instanceof ObjectMessage) {
-//            ObjectMessage object = (ObjectMessage) message;
-//
-//            try {
-//                String notif = (String) object.getObject();
-//
-//                this.metier.traiterNotification(notif);
-//
-//            } catch (JMSException ex) {
-//                Logger.getLogger(RecepteurNotification.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//
-//        } else if (message != null) {
-//            System.out.println("APPREDACTION - The message is not a type ObjectMessage.\n\tObject : " + message.toString());
-//        }
+        if (message instanceof ObjectMessage) {
+            ObjectMessage object = (ObjectMessage) message;
+
+            try {
+                String notif = (String) object.getObject();
+
+                this.metier.traiterNotification(notif);
+
+            } catch (JMSException ex) {
+                Logger.getLogger(RecepteurNotification.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } else if (message != null) {
+            System.out.println("APPREDACTION - The message is not a type ObjectMessage.\n\tObject : " + message.toString());
+        }
     }
 
 }

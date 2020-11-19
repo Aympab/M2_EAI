@@ -46,15 +46,8 @@ public class ServicePresse implements ServicePresseLocal {
     @Override
     public void notifierAppRedac() {
         try {
-            Connection conn = null;
-            Session s = null;
 
-            conn = CONNECTION_FACTORY_M2_EAI.createConnection();
-            s = conn.createSession(false, s.AUTO_ACKNOWLEDGE);
-
-            Message m = sender.createJMSMessageForPRESSE_NOTIF_REDAC(s, new String("NOTIFICATION NOUVEAUX TRUCS"));
-            
-            sender.sendJMSMessageToPRESSE_NOTIF_REDAC(m);
+            sender.sendJMSMessageToPRESSE_NOTIF_REDAC(new String("NOTIFICATION NOUVEAUX TRUCS"));
 
         } catch (JMSException ex) {
             Logger.getLogger(ServicePresse.class.getName()).log(Level.SEVERE, null, ex);
@@ -67,7 +60,7 @@ public class ServicePresse implements ServicePresseLocal {
     @Override
     public void traiterArticles(ArrayList<Article> listeArt) {
         for (Article a : listeArt) {
-            System.out.println(a.getContenu());
+            System.out.println("APP PRESSE - CONTENU ARTICLE : " + a.getContenu());
         }
     }
 

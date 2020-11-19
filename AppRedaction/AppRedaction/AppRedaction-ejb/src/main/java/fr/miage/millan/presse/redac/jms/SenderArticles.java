@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.miage.millan.presse.miseSousPresse.jms;
+package fr.miage.millan.presse.redac.jms;
 
+import fr.miage.millan.presse.sharedredactionpresse.objects.Article;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.jms.Connection;
@@ -15,7 +17,6 @@ import javax.jms.Message;
 import javax.jms.MessageProducer;
 import javax.jms.ObjectMessage;
 import javax.jms.Session;
-import javax.jms.TextMessage;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -24,27 +25,25 @@ import javax.naming.NamingException;
  *
  * @author aympa
  */
-public class SenderNotification {
+public class SenderArticles {
 
-    public Message createJMSMessageForPRESSE_NOTIF_REDAC(Session session, Object messageData) throws JMSException {
+    private Message createJMSMessageForARTICLE_INIT(Session session, Object messageData) throws JMSException {
         // TODO create and populate message to send
-        ObjectMessage om = session.createObjectMessage();
-        om.setObject((String)messageData);
+        ObjectMessage om = session.createObjectMessage((ArrayList<Article>)messageData);
         return om;
     }
 
-    public void sendJMSMessageToPRESSE_NOTIF_REDAC(Object messageData) throws JMSException, NamingException {
-        Context c = new InitialContext(); //A SURVEILLER
-        ConnectionFactory cf = (ConnectionFactory) c.lookup(/*"java:comp/env/*/"CONNECTION_FACTORY_M2_EAI");
+    public void sendJMSMessageToARTICLE_INIT(Object messageData) throws JMSException, NamingException {
+        Context c = new InitialContext();
+        ConnectionFactory cf = (ConnectionFactory) c.lookup("CONNECTION_FACTORY_M2_EAI");
         Connection conn = null;
         Session s = null;
-        
         try {
             conn = cf.createConnection();
             s = conn.createSession(false, s.AUTO_ACKNOWLEDGE);
-            Destination destination = (Destination) c.lookup(/*"java:comp/env/*/"PRESSE_NOTIF_REDAC");
+            Destination destination = (Destination) c.lookup("ARTICLE_INIT");
             MessageProducer mp = s.createProducer(destination);
-            mp.send(createJMSMessageForPRESSE_NOTIF_REDAC(s, messageData));
+            mp.send(createJMSMessageForARTICLE_INIT(s, messageData));
         } finally {
             if (s != null) {
                 try {
@@ -58,5 +57,5 @@ public class SenderNotification {
             }
         }
     }
-
+    
 }

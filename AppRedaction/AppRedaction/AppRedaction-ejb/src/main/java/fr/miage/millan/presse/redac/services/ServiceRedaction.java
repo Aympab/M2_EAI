@@ -5,10 +5,20 @@ package fr.miage.millan.presse.redac.services;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import fr.miage.millan.presse.redac.jms.SenderArticles;
 import fr.miage.millan.presse.sharedredactionpresse.objects.Article;
 import java.util.ArrayList;
 import javax.ejb.Stateless;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.Resource;
+import javax.jms.Connection;
+import javax.jms.ConnectionFactory;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.Session;
+import javax.naming.NamingException;
 
 /**
  *
@@ -16,6 +26,11 @@ import java.util.Iterator;
  */
 @Stateless
 public class ServiceRedaction implements ServiceRedactionLocal {
+
+    @Resource(mappedName = "CONNECTION_FACTORY_M2_EAI")
+    private ConnectionFactory CONNECTION_FACTORY_M2_EAI;
+
+    SenderArticles sender = new SenderArticles();
 
     //Id a incrémenter à chaque création
     private static long idCreation = 1;
@@ -33,7 +48,7 @@ public class ServiceRedaction implements ServiceRedactionLocal {
     }
 
     @Override
-    public ArrayList<Article> selectionnerArticles(Long idArticleSelectionne) {
+    public ArrayList<Article> selectionnerArticle(Long idArticleSelectionne) {
         Article art;
 
         Iterator ite = bdArticle.iterator();
@@ -49,7 +64,18 @@ public class ServiceRedaction implements ServiceRedactionLocal {
 
     @Override
     public void envoyerListeArticles() {
+        Connection conn = null;
+        Session s = null;
 
+        try {
+
+            sender.sendJMSMessageToARTICLE_INIT(articlesAEnvoyer);
+            
+        } catch (JMSException ex) {
+            Logger.getLogger(ServiceRedaction.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(ServiceRedaction.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -63,8 +89,8 @@ public class ServiceRedaction implements ServiceRedactionLocal {
     }
 
     @Override
-    public void traiterNotification() {
-        System.out.println("APPREDACTION_SERVICE REDAC - NOTIF RECUE");
+    public void traiterNotification(String notif) {
+        System.out.println("APPREDACTION_SERVICE REDAC - NOTIF RECUE : " + notif);
         //Faire le traitement de la notif recue
     }
 

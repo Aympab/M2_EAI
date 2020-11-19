@@ -36,9 +36,9 @@ public class RedactionRemote {
         ejbRef.envoyerListeArticles();
     }
 
-    @WebMethod(operationName = "selectionnerArticles")
-    public ArrayList<fr.miage.millan.presse.sharedredactionpresse.objects.Article> selectionnerArticles(@WebParam(name = "idArticleSelectionne") Long idArticleSelectionne) {
-        return ejbRef.selectionnerArticles(idArticleSelectionne);
+    @WebMethod(operationName = "selectionnerArticle")
+    public ArrayList<fr.miage.millan.presse.sharedredactionpresse.objects.Article> selectionnerArticle(@WebParam(name = "idArticleSelectionne") Long idArticleSelectionne) {
+        return ejbRef.selectionnerArticle(idArticleSelectionne);
     }
 
     @WebMethod(operationName = "getAllArticles")
@@ -46,10 +46,10 @@ public class RedactionRemote {
         return ejbRef.getAllArticles();
     }
 
-    @WebMethod(operationName = "traiterNotification")
-    @Oneway
-    public void traiterNotification(@WebParam(name = "notif") String notif) {
-        ejbRef.traiterNotification(notif);
-    }
+//    @WebMethod(operationName = "traiterNotification")
+//    @Oneway
+//    public void traiterNotification(@WebParam(name = "notif") String notif) {
+//        ejbRef.traiterNotification();
+//    }
     
 }

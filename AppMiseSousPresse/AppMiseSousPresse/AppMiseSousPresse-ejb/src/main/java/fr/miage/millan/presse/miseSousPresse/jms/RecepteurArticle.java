@@ -25,29 +25,36 @@ import javax.jms.ObjectMessage;
 @MessageDriven(mappedName = "ARTICLE_INIT", activationConfig = {
     @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue")
 })
-public class RecevoirArticle implements MessageListener {
+public class RecepteurArticle implements MessageListener {
     
     ServicePresse metier;
-    public RecevoirArticle() {
+    public RecepteurArticle() {
         metier = new ServicePresse();
     }
     
     @Override
     public void onMessage(Message message) {
+        System.out.println("APPPRESSE - OBJ : " + message);
+        System.out.println(message.getClass());
+        
+//        	            Message message = receiver2.receive();
+//	            ObjectMessage om = (ObjectMessage) message;
+//	            TitreBoursier t = (TitreBoursier) om.getObject();
         if (message instanceof ObjectMessage) {
                 ObjectMessage object = (ObjectMessage) message;
 
             try {
                 ArrayList<Article> a = (ArrayList<Article>) object.getObject();
                 
+                //APPEL METIER                
                 metier.traiterArticles(a);
-//APPEL METIER
+
             } catch (JMSException ex) {
-                Logger.getLogger(RecevoirArticle.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(RecepteurArticle.class.getName()).log(Level.SEVERE, null, ex);
             }
               
             } else if (message != null) {
-                System.out.println("Received non text message");
+                System.out.println("APPPRESSE - Object type is not ObjectMessage");
             }
     }
     

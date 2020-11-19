@@ -33,7 +33,7 @@ public interface ServiceRedactionLocal {
      * @param idArticleSelectionne L'id de l'article qu'on veut ajouter à la liste d'articles à envoyer
      * @return la liste des articles à envoyer mise à jour
      */
-    public ArrayList<Article> selectionnerArticles(Long idArticleSelectionne);
+    public ArrayList<Article> selectionnerArticle(Long idArticleSelectionne);
     
     public ArrayList<Article> getAllArticles();
     
@@ -41,7 +41,7 @@ public interface ServiceRedactionLocal {
      * Permet de traiter les notifications de la queue PRESSE_NOTIF_REDAC lorsqu'on en reçoit une
      * @param notif
      */
-    public void traiterNotification();
+    public void traiterNotification(String notif);
 }
 
 
