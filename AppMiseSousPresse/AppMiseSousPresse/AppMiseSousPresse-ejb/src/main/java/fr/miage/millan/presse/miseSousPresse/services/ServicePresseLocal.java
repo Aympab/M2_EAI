@@ -16,7 +16,7 @@ import javax.ejb.Local;
 @Local
 public interface ServicePresseLocal {
 
-    public void traiterArticle(ArrayList<Article> listeArt);
+    public void traiterArticles(ArrayList<Article> listeArt);
     
     /**
      * Permet d'envoyer une notifiaction texte à l'app redac

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.miage.millan.presse.miseSousPresse.mdb;
+package fr.miage.millan.presse.miseSousPresse.jms;
 
+import fr.miage.millan.presse.miseSousPresse.services.ServicePresse;
 import fr.miage.millan.presse.sharedredactionpresse.objects.Article;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -26,7 +27,9 @@ import javax.jms.ObjectMessage;
 })
 public class RecevoirArticle implements MessageListener {
     
+    ServicePresse metier;
     public RecevoirArticle() {
+        metier = new ServicePresse();
     }
     
     @Override
@@ -37,6 +40,7 @@ public class RecevoirArticle implements MessageListener {
             try {
                 ArrayList<Article> a = (ArrayList<Article>) object.getObject();
                 
+                metier.traiterArticles(a);
 //APPEL METIER
             } catch (JMSException ex) {
                 Logger.getLogger(RecevoirArticle.class.getName()).log(Level.SEVERE, null, ex);

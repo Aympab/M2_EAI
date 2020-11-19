@@ -16,9 +16,16 @@ import javax.ejb.Local;
 @Local
 public interface ServiceRedactionLocal {
     
+    /**
+     * Créer un article et ajout dans la BD (qui n'en est pas une pour le projet)
+     * @param nomArticle
+     * @param motClefs
+     * @param contenu
+     * @param auteur 
+     */
     public void creerArticle(String nomArticle, ArrayList<String> motClefs, String contenu, String auteur);
 
-   //Envoie la liste d'article en attente
+   //Envoie la liste d'article en attente vers l'application MiseSousPresse
     public void envoyerListeArticles();
     
     /**
@@ -28,13 +35,13 @@ public interface ServiceRedactionLocal {
      */
     public ArrayList<Article> selectionnerArticles(Long idArticleSelectionne);
     
-    public ArrayList<Article> getArticles();
+    public ArrayList<Article> getAllArticles();
     
     /**
-     * Permet de récupérer les notifications de la queue PRESSE_NOTIF_REDAC
-     * @return vrai s'il y a au moins une notif, false sinon
+     * Permet de traiter les notifications de la queue PRESSE_NOTIF_REDAC lorsqu'on en reçoit une
+     * @param notif
      */
-    public boolean recevoirNotification();
+    public void traiterNotification();
 }
 
 

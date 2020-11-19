@@ -5,6 +5,7 @@
  */
 package fr.miage.millan.presse.miseSousPresse.services;
 
+import fr.miage.millan.presse.miseSousPresse.jms.SenderNotification;
 import fr.miage.millan.presse.sharedredactionpresse.objects.Article;
 import java.util.ArrayList;
 import javax.ejb.Stateless;
@@ -36,68 +37,38 @@ public class ServicePresse implements ServicePresseLocal {
 
     @Resource(mappedName = "CONNECTION_FACTORY_M2_EAI")
     private ConnectionFactory CONNECTION_FACTORY_M2_EAI;
-    
-    @Resource(mappedName = "ARTICLE_INITFactory")
-    private ConnectionFactory aRTICLE_INITFactory;
+
+//    @Resource(mappedName = "ARTICLE_INITFactory")
+//    private ConnectionFactory aRTICLE_INITFactory;
+
+    private final SenderNotification sender = new SenderNotification();
 
     @Override
     public void notifierAppRedac() {
-        Context context = null;
-        ConnectionFactory factory = null;
-        Connection connection = null;
-        String factoryName = "CONNECTION_FACTORY_M2_EAI";
-        String destName = "PRESSE_NOTIF_REDAC";
-        Destination dest = null;
-        Session session = null;
-        MessageProducer sender = null;
-
         try {
-            context = new InitialContext();
-            factory = (ConnectionFactory) context.lookup(factoryName);
-            dest = (Destination) context.lookup(destName);
-            connection = factory.createConnection();
-            session = connection.createSession(
-                    false, Session.AUTO_ACKNOWLEDGE);
-            sender = session.createProducer(dest);
-            connection.start();
+            Connection conn = null;
+            Session s = null;
 
-            ObjectMessage object = session.createObjectMessage();
-            String notif = "NOTIF_FROM_SERVICE_PRESSE";
-            object.setObject((Serializable) notif);
+            conn = CONNECTION_FACTORY_M2_EAI.createConnection();
+            s = conn.createSession(false, s.AUTO_ACKNOWLEDGE);
 
-            sender.send(object);
+            Message m = sender.createJMSMessageForPRESSE_NOTIF_REDAC(s, new String("NOTIFICATION NOUVEAUX TRUCS"));
+            
+            sender.sendJMSMessageToPRESSE_NOTIF_REDAC(m);
 
-        } catch (JMSException | NamingException exception) {
-            exception.printStackTrace();
-        } finally {
-            // close the context
-            if (context != null) {
-                try {
-                    context.close();
-                } catch (NamingException exception) {
-                    exception.printStackTrace();
-                }
-            }
-            // close the connection
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (JMSException exception) {
-                    exception.printStackTrace();
-                }
-            }
+        } catch (JMSException ex) {
+            Logger.getLogger(ServicePresse.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(ServicePresse.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
 
+    }
 
     @Override
-    public void traiterArticle(ArrayList<Article> listeArt) {
-        for(Article a: listeArt) 
-        {
+    public void traiterArticles(ArrayList<Article> listeArt) {
+        for (Article a : listeArt) {
             System.out.println(a.getContenu());
-        }        
+        }
     }
-    
-    
 
 }
