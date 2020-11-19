@@ -5,7 +5,7 @@
  */
 package fr.miage.millan.presse.appPub.services;
 
-import fr.miage.millan.presse.archive.entities.Publicite;
+import fr.miage.millan.presse.appPub.entites.Publicite;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.ejb.Stateless;
@@ -46,6 +46,7 @@ public class ServicePublicite implements ServicePubliciteLocal {
         Session session = null;
         MessageProducer sender = null;
 
+        
         try {
             context = new InitialContext();
             factory = (ConnectionFactory) context.lookup(factoryName);

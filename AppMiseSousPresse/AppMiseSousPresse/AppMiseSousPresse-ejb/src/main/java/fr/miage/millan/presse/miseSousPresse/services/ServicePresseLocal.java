@@ -5,6 +5,8 @@
  */
 package fr.miage.millan.presse.miseSousPresse.services;
 
+import fr.miage.millan.presse.sharedredactionpresse.objects.Article;
+import java.util.ArrayList;
 import javax.ejb.Local;
 
 /**
@@ -14,10 +16,17 @@ import javax.ejb.Local;
 @Local
 public interface ServicePresseLocal {
 
-    public void recupererArticle();
+    public void traiterArticle(ArrayList<Article> listeArt);
     
     /**
      * Permet d'envoyer une notifiaction texte à l'app redac
      */
     public void notifierAppRedac();
+    
+    /**
+     * Récupère les pubs présentes dans la queue PUBINIT et les stocke dans le singleton
+     */
+//    public void recupererPub();
+    
+//    public void transfererVolumeVersDistrib(Volume v);
 }

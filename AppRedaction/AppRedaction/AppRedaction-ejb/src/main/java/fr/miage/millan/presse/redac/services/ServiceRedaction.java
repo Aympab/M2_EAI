@@ -1,11 +1,12 @@
+package fr.miage.millan.presse.redac.services;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.miage.millan.services;
 
-import fr.miage.millan.entities.Article;
+import fr.miage.millan.presse.sharedredactionpresse.objects.Article;
 import java.util.ArrayList;
 import javax.ejb.Stateless;
 import java.io.Serializable;

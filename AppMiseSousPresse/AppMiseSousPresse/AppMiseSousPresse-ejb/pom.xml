@@ -21,16 +21,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>AppRedaction</artifactId>
-            <version>${project.version}</version>
-            <type>pom</type>
-        </dependency>
-        <dependency>
-            <groupId>fr.miage.millan</groupId>
-            <artifactId>AppRedaction-ejb</artifactId>
+            <groupId>fr.miage.millan.presse</groupId>
+            <artifactId>SharedRedactionPresse</artifactId>
             <version>1.0</version>
-            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>javax</groupId>
