@@ -7,6 +7,7 @@ package fr.miage.millan.presse.miseSousPresse.services;
 
 import fr.miage.millan.presse.sharedpubpresse.objects.Publicite;
 import fr.miage.millan.presse.sharedredactionpresse.objects.Article;
+import fr.miage.millan.presse.sharedvolume.objects.Volume;
 import java.util.ArrayList;
 import javax.ejb.Local;
 
@@ -26,8 +27,16 @@ public interface ServicePresseLocal {
     
     /**
      * Récupère les pubs présentes dans la queue PUBINIT et les stocke dans le singleton
+     * @param listePub
      */
     public void recupererPub(ArrayList<Publicite> listePub);
+    
+    public ArrayList<Volume> getVolumesAEnvoyer();
+            
+    public void transfererVolumesArchive();
+    public void transfererVolumesDistribution();
+    
+    public ArrayList<Volume> selectionnerVolumePourEnvoi(int idVolume);
     
     public void printAllStock();
     
