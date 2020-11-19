@@ -47,6 +47,13 @@ public class Publicite implements Serializable {
     public Publicite() {
     }
 
+    public Publicite(String nom, String contenu) {
+        this.nom = nom;
+        this.contenu = contenu;
+    }
+
+    
+    
     public Publicite(Integer idpublicite) {
         this.idpublicite = idpublicite;
     }

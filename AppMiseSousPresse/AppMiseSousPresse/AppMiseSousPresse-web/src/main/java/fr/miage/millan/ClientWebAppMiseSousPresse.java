@@ -5,7 +5,7 @@
  */
 package fr.miage.millan;
 
-import fr.miage.millan.services.ServicePresseLocal;
+import fr.miage.millan.presse.miseSousPresse.services.ServicePresseLocal;
 import javax.ejb.EJB;
 import javax.jws.WebService;
 import javax.ejb.Stateless;

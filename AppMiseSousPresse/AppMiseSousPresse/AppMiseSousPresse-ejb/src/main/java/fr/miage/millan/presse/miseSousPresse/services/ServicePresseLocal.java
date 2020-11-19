@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.miage.millan.services;
+package fr.miage.millan.presse.miseSousPresse.services;
 
 import javax.ejb.Local;
 
@@ -15,4 +15,9 @@ import javax.ejb.Local;
 public interface ServicePresseLocal {
 
     public void recupererArticle();
+    
+    /**
+     * Permet d'envoyer une notifiaction texte à l'app redac
+     */
+    public void notifierAppRedac();
 }

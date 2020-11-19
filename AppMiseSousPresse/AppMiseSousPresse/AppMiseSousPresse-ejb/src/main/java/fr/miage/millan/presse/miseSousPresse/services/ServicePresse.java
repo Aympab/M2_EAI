@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.miage.millan.services;
+package fr.miage.millan.presse.miseSousPresse.services;
 
 import fr.miage.millan.entities.Article;
 import java.util.ArrayList;
@@ -21,6 +21,7 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
+import javax.jms.MessageProducer;
 import javax.jms.Session;
 import javax.jms.ObjectMessage;
 import javax.naming.NamingException;
@@ -108,29 +109,53 @@ public class ServicePresse implements ServicePresseLocal {
         }
     }
 
-//    @Override
-//    public void onMessage(Message message) {
-//        if (message instanceof ObjectMessage) {
-//            try {
-//                ObjectMessage object = (ObjectMessage) message;
-//
-//                //TODO : Changer les dingueries ici
-//                ArrayList<Article> a = (ArrayList<Article>) object.getObject();
-////                System.out.println(a.get(0).getContenu());
-//
-//                System.out.println("SIZE : " + a.size());
-//
-//                Iterator ite = a.iterator();
-//                while (ite.hasNext()) {
-//                    System.out.println(((Article) ite.next()).getContenu());
-//                }
-//            } catch (JMSException ex) {
-//                Logger.getLogger(ServicePresse.class.getName()).log(Level.SEVERE, null, ex);
-//                System.out.println("ON A TRIGEER LE CATCH");
-//            }
-//        } else if (message != null) {
-//            System.out.println("Received non text message");
-//        }
-//
-//    }
+    @Override
+    public void notifierAppRedac() {
+        Context context = null;
+        ConnectionFactory factory = null;
+        Connection connection = null;
+        String factoryName = "CONNECTION_FACTORY_M2_EAI";
+        String destName = "PRESSE_NOTIF_REDAC";
+        Destination dest = null;
+        Session session = null;
+        MessageProducer sender = null;
+
+        try {
+            context = new InitialContext();
+            factory = (ConnectionFactory) context.lookup(factoryName);
+            dest = (Destination) context.lookup(destName);
+            connection = factory.createConnection();
+            session = connection.createSession(
+                    false, Session.AUTO_ACKNOWLEDGE);
+            sender = session.createProducer(dest);
+            connection.start();
+
+            ObjectMessage object = session.createObjectMessage();
+            String notif = "NOTIF_FROM_SERVICE_PRESSE";
+            object.setObject((Serializable) notif);
+                        
+            sender.send(object);
+
+        } catch (JMSException | NamingException exception) {
+            exception.printStackTrace();
+        } finally {
+            // close the context
+            if (context != null) {
+                try {
+                    context.close();
+                } catch (NamingException exception) {
+                    exception.printStackTrace();
+                }
+            }
+            // close the connection
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (JMSException exception) {
+                    exception.printStackTrace();
+                }
+            }
+        }
+    }
+
 }

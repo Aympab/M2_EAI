@@ -30,6 +30,11 @@ public interface ServiceRedactionLocal {
     
     public ArrayList<Article> getArticles();
     
+    /**
+     * Permet de récupérer les notifications de la queue PRESSE_NOTIF_REDAC
+     * @return vrai s'il y a au moins une notif, false sinon
+     */
+    public boolean recevoirNotification();
 }
 
 
