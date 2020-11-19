@@ -10,8 +10,8 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(Titre.class)
 public class Titre_ { 
 
-    public static volatile ListAttribute<Titre, Volume> listeVolumes;
-    public static volatile SingularAttribute<Titre, Long> id;
-    public static volatile SingularAttribute<Titre, String> nom;
+    public static volatile ListAttribute<TitreBD, Volume> listeVolumes;
+    public static volatile SingularAttribute<TitreBD, Long> id;
+    public static volatile SingularAttribute<TitreBD, String> nom;
 
 }

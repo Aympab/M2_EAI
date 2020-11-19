@@ -9,10 +9,10 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(Article.class)
 public class Article_ { 
 
-    public static volatile SingularAttribute<Article, ArrayList> motsClefs;
-    public static volatile SingularAttribute<Article, Long> id;
-    public static volatile SingularAttribute<Article, String> nom;
-    public static volatile SingularAttribute<Article, String> contenu;
-    public static volatile SingularAttribute<Article, String> auteur;
+    public static volatile SingularAttribute<ArticleBD, ArrayList> motsClefs;
+    public static volatile SingularAttribute<ArticleBD, Long> id;
+    public static volatile SingularAttribute<ArticleBD, String> nom;
+    public static volatile SingularAttribute<ArticleBD, String> contenu;
+    public static volatile SingularAttribute<ArticleBD, String> auteur;
 
 }

@@ -5,7 +5,7 @@
  */
 package fr.miage.millan.presse.archive.facades;
 
-import fr.miage.millan.presse.archive.entities.Publicite;
+import fr.miage.millan.presse.archive.entities.PubliciteBD;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author aympa
  */
 @Stateless
-public class PubliciteFacade extends AbstractFacade<Publicite> implements PubliciteFacadeLocal {
+public class PubliciteFacade extends AbstractFacade<PubliciteBD> implements PubliciteFacadeLocal {
 
     @PersistenceContext(unitName = "fr.miage.millan_ServeurArchive-ejb_ejb_1.0PU")
     private EntityManager em;
@@ -26,7 +26,7 @@ public class PubliciteFacade extends AbstractFacade<Publicite> implements Public
     }
 
     public PubliciteFacade() {
-        super(Publicite.class);
+        super(PubliciteBD.class);
     }
     
 }

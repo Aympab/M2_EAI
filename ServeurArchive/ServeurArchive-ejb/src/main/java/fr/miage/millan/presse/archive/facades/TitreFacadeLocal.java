@@ -5,7 +5,7 @@
  */
 package fr.miage.millan.presse.archive.facades;
 
-import fr.miage.millan.presse.archive.entities.Titre;
+import fr.miage.millan.presse.archive.entities.TitreBD;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -16,17 +16,17 @@ import javax.ejb.Local;
 @Local
 public interface TitreFacadeLocal {
 
-    void create(Titre titre);
+    void create(TitreBD titre);
 
-    void edit(Titre titre);
+    void edit(TitreBD titre);
 
-    void remove(Titre titre);
+    void remove(TitreBD titre);
 
-    Titre find(Object id);
+    TitreBD find(Object id);
 
-    List<Titre> findAll();
+    List<TitreBD> findAll();
 
-    List<Titre> findRange(int[] range);
+    List<TitreBD> findRange(int[] range);
 
     int count();
     

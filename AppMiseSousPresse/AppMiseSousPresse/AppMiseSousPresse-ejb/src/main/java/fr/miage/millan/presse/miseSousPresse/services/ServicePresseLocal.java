@@ -18,18 +18,18 @@ import javax.ejb.Local;
 @Local
 public interface ServicePresseLocal {
 
-    public void traiterArticles(ArrayList<Article> listeArt);
+//    public void traiterArticles(ArrayList<Article> listeArt);
     
     /**
      * Permet d'envoyer une notifiaction texte à l'app redac
      */
     public void notifierAppRedac();
     
-    /**
-     * Récupère les pubs présentes dans la queue PUBINIT et les stocke dans le singleton
-     * @param listePub
-     */
-    public void recupererPub(ArrayList<Publicite> listePub);
+//    /**
+//     * Récupère les pubs présentes dans la queue PUBINIT et les stocke dans le singleton
+//     * @param listePub
+//     */
+//    public void recupererPub(ArrayList<Publicite> listePub);
     
     public ArrayList<Volume> getVolumesAEnvoyer();
             

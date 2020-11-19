@@ -5,7 +5,7 @@
  */
 package fr.miage.millan.presse.archive.facades;
 
-import fr.miage.millan.presse.archive.entities.Volume;
+import fr.miage.millan.presse.archive.entities.VolumeBD;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -16,17 +16,17 @@ import javax.ejb.Local;
 @Local
 public interface VolumeFacadeLocal {
 
-    void create(Volume volume);
+    void create(VolumeBD volume);
 
-    void edit(Volume volume);
+    void edit(VolumeBD volume);
 
-    void remove(Volume volume);
+    void remove(VolumeBD volume);
 
-    Volume find(Object id);
+    VolumeBD find(Object id);
 
-    List<Volume> findAll();
+    List<VolumeBD> findAll();
 
-    List<Volume> findRange(int[] range);
+    List<VolumeBD> findRange(int[] range);
 
     int count();
     

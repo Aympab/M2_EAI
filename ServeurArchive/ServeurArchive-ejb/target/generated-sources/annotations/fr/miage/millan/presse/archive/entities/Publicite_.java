@@ -8,8 +8,8 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(Publicite.class)
 public class Publicite_ { 
 
-    public static volatile SingularAttribute<Publicite, Integer> idpublicite;
-    public static volatile SingularAttribute<Publicite, String> nom;
-    public static volatile SingularAttribute<Publicite, String> contenu;
+    public static volatile SingularAttribute<PubliciteBD, Integer> idpublicite;
+    public static volatile SingularAttribute<PubliciteBD, String> nom;
+    public static volatile SingularAttribute<PubliciteBD, String> contenu;
 
 }

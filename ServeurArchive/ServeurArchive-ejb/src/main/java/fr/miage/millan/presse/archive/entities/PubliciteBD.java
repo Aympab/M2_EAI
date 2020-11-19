@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Publicite.findByIdpublicite", query = "SELECT p FROM Publicite p WHERE p.idpublicite = :idpublicite")
     , @NamedQuery(name = "Publicite.findByNom", query = "SELECT p FROM Publicite p WHERE p.nom = :nom")
     , @NamedQuery(name = "Publicite.findByContenu", query = "SELECT p FROM Publicite p WHERE p.contenu = :contenu")})
-public class Publicite implements Serializable {
+public class PubliciteBD implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -44,17 +44,17 @@ public class Publicite implements Serializable {
     @Column(name = "CONTENU")
     private String contenu;
 
-    public Publicite() {
+    public PubliciteBD() {
     }
 
-    public Publicite(String nom, String contenu) {
+    public PubliciteBD(String nom, String contenu) {
         this.nom = nom;
         this.contenu = contenu;
     }
 
     
     
-    public Publicite(Integer idpublicite) {
+    public PubliciteBD(Integer idpublicite) {
         this.idpublicite = idpublicite;
     }
 
@@ -92,10 +92,10 @@ public class Publicite implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Publicite)) {
+        if (!(object instanceof PubliciteBD)) {
             return false;
         }
-        Publicite other = (Publicite) object;
+        PubliciteBD other = (PubliciteBD) object;
         if ((this.idpublicite == null && other.idpublicite != null) || (this.idpublicite != null && !this.idpublicite.equals(other.idpublicite))) {
             return false;
         }

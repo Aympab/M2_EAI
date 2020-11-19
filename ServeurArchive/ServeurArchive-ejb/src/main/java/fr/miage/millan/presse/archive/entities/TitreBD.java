@@ -18,12 +18,12 @@ import javax.persistence.OneToMany;
  * @author aympa
  */
 @Entity
-public class Titre implements Serializable {
+public class TitreBD implements Serializable {
     //ATTRIBUTS
     private String nom;
     
     @OneToMany
-    private ArrayList<Volume> listeVolumes;
+    private ArrayList<VolumeBD> listeVolumes;
     
     //JEE
     private static final long serialVersionUID = 1L;
@@ -49,10 +49,10 @@ public class Titre implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Titre)) {
+        if (!(object instanceof TitreBD)) {
             return false;
         }
-        Titre other = (Titre) object;
+        TitreBD other = (TitreBD) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -76,11 +76,11 @@ public class Titre implements Serializable {
         this.nom = nom;
     }
 
-    public ArrayList<Volume> getListeVolumes() {
+    public ArrayList<VolumeBD> getListeVolumes() {
         return listeVolumes;
     }
 
-    public void setListeVolumes(ArrayList<Volume> listeVolumes) {
+    public void setListeVolumes(ArrayList<VolumeBD> listeVolumes) {
         this.listeVolumes = listeVolumes;
     }
     

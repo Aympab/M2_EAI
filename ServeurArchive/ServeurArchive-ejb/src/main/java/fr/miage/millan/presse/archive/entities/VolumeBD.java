@@ -18,16 +18,22 @@ import javax.persistence.OneToMany;
  * @author aympa
  */
 @Entity
-public class Volume implements Serializable {
-    
+public class VolumeBD implements Serializable {
+
     //ATTRIBUTS
     private int numero;
-    
+
     @OneToMany
-    private ArrayList<Article> listeArticles;
-    
+    private ArrayList<ArticleBD> listeArticles;
+
     @OneToMany
-    private ArrayList<Publicite> listePublicites;
+    private ArrayList<PubliciteBD> listePublicites;
+
+    public VolumeBD(int numero, ArrayList<ArticleBD> listeArticles, ArrayList<PubliciteBD> listePublicites) {
+        this.numero = numero;
+        this.listeArticles = listeArticles;
+        this.listePublicites = listePublicites;
+    }
 
     //JEE
     private static final long serialVersionUID = 1L;
@@ -53,10 +59,10 @@ public class Volume implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Volume)) {
+        if (!(object instanceof VolumeBD)) {
             return false;
         }
-        Volume other = (Volume) object;
+        VolumeBD other = (VolumeBD) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -67,9 +73,8 @@ public class Volume implements Serializable {
     public String toString() {
         return "fr.miage.millan.presse.archive.entities.Volume[ id=" + id + " ]";
     }
-    
-    //GETTERS & SETTERS
 
+    //GETTERS & SETTERS
     public int getNumero() {
         return numero;
     }
@@ -78,20 +83,20 @@ public class Volume implements Serializable {
         this.numero = numero;
     }
 
-    public ArrayList<Article> getListeArticles() {
+    public ArrayList<ArticleBD> getListeArticles() {
         return listeArticles;
     }
 
-    public void setListeArticles(ArrayList<Article> listeArticles) {
+    public void setListeArticles(ArrayList<ArticleBD> listeArticles) {
         this.listeArticles = listeArticles;
     }
 
-    public ArrayList<Publicite> getListePublicites() {
+    public ArrayList<PubliciteBD> getListePublicites() {
         return listePublicites;
     }
 
-    public void setListePublicites(ArrayList<Publicite> listePublicites) {
+    public void setListePublicites(ArrayList<PubliciteBD> listePublicites) {
         this.listePublicites = listePublicites;
     }
-    
+
 }

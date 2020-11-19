@@ -5,7 +5,7 @@
  */
 package fr.miage.millan.presse.archive.facades;
 
-import fr.miage.millan.presse.archive.entities.Article;
+import fr.miage.millan.presse.archive.entities.ArticleBD;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author aympa
  */
 @Stateless
-public class ArticleFacade extends AbstractFacade<Article> implements ArticleFacadeLocal {
+public class ArticleFacade extends AbstractFacade<ArticleBD> implements ArticleFacadeLocal {
 
     @PersistenceContext(unitName = "fr.miage.millan_ServeurArchive-ejb_ejb_1.0PU")
     private EntityManager em;
@@ -26,7 +26,7 @@ public class ArticleFacade extends AbstractFacade<Article> implements ArticleFac
     }
 
     public ArticleFacade() {
-        super(Article.class);
+        super(ArticleBD.class);
     }
     
 }

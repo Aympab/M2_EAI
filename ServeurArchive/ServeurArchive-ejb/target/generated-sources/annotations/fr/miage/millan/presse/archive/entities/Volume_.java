@@ -1,7 +1,7 @@
 package fr.miage.millan.presse.archive.entities;
 
-import fr.miage.millan.presse.archive.entities.Article;
-import fr.miage.millan.presse.archive.entities.Publicite;
+import fr.miage.millan.presse.archive.entities.ArticleBD;
+import fr.miage.millan.presse.archive.entities.PubliciteBD;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
@@ -11,9 +11,9 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(Volume.class)
 public class Volume_ { 
 
-    public static volatile SingularAttribute<Volume, Integer> numero;
-    public static volatile ListAttribute<Volume, Publicite> listePublicites;
-    public static volatile ListAttribute<Volume, Article> listeArticles;
-    public static volatile SingularAttribute<Volume, Long> id;
+    public static volatile SingularAttribute<VolumeBD, Integer> numero;
+    public static volatile ListAttribute<VolumeBD, PubliciteBD> listePublicites;
+    public static volatile ListAttribute<VolumeBD, ArticleBD> listeArticles;
+    public static volatile SingularAttribute<VolumeBD, Long> id;
 
 }

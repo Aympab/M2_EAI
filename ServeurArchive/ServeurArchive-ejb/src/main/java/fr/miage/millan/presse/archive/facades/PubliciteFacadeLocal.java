@@ -5,7 +5,7 @@
  */
 package fr.miage.millan.presse.archive.facades;
 
-import fr.miage.millan.presse.archive.entities.Publicite;
+import fr.miage.millan.presse.archive.entities.PubliciteBD;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -16,17 +16,17 @@ import javax.ejb.Local;
 @Local
 public interface PubliciteFacadeLocal {
 
-    void create(Publicite publicite);
+    void create(PubliciteBD publicite);
 
-    void edit(Publicite publicite);
+    void edit(PubliciteBD publicite);
 
-    void remove(Publicite publicite);
+    void remove(PubliciteBD publicite);
 
-    Publicite find(Object id);
+    PubliciteBD find(Object id);
 
-    List<Publicite> findAll();
+    List<PubliciteBD> findAll();
 
-    List<Publicite> findRange(int[] range);
+    List<PubliciteBD> findRange(int[] range);
 
     int count();
     

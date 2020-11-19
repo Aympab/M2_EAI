@@ -5,7 +5,7 @@
  */
 package fr.miage.millan.presse.archive.facades;
 
-import fr.miage.millan.presse.archive.entities.Article;
+import fr.miage.millan.presse.archive.entities.ArticleBD;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -16,17 +16,17 @@ import javax.ejb.Local;
 @Local
 public interface ArticleFacadeLocal {
 
-    void create(Article article);
+    void create(ArticleBD article);
 
-    void edit(Article article);
+    void edit(ArticleBD article);
 
-    void remove(Article article);
+    void remove(ArticleBD article);
 
-    Article find(Object id);
+    ArticleBD find(Object id);
 
-    List<Article> findAll();
+    List<ArticleBD> findAll();
 
-    List<Article> findRange(int[] range);
+    List<ArticleBD> findRange(int[] range);
 
     int count();
     

@@ -5,7 +5,7 @@
  */
 package fr.miage.millan.presse.archive.facades;
 
-import fr.miage.millan.presse.archive.entities.Volume;
+import fr.miage.millan.presse.archive.entities.VolumeBD;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author aympa
  */
 @Stateless
-public class VolumeFacade extends AbstractFacade<Volume> implements VolumeFacadeLocal {
+public class VolumeFacade extends AbstractFacade<VolumeBD> implements VolumeFacadeLocal {
 
     @PersistenceContext(unitName = "fr.miage.millan_ServeurArchive-ejb_ejb_1.0PU")
     private EntityManager em;
@@ -26,7 +26,7 @@ public class VolumeFacade extends AbstractFacade<Volume> implements VolumeFacade
     }
 
     public VolumeFacade() {
-        super(Volume.class);
+        super(VolumeBD.class);
     }
     
 }
