@@ -31,5 +31,5 @@ public interface ServicePresseLocal {
     
     public void printAllStock();
     
-//    public void transfererVolumeVersDistrib(Volume v);
+    //public void transfererVolumeVersDistrib(Volume v);
 }
