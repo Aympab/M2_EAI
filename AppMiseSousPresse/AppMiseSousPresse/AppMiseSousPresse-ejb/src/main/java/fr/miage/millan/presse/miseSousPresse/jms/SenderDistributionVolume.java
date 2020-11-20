@@ -32,9 +32,12 @@ public class SenderDistributionVolume {
         return om;
     }
 
+    
+
     public void sendJMSMessageToPRESSE_TRANSFERT_DISTRIB(Object messageData) throws JMSException, NamingException {
         Context c = new InitialContext();
         ConnectionFactory cf = (ConnectionFactory) c.lookup("CONNECTION_FACTORY_M2_EAI");
+        
         Connection conn = null;
         Session s = null;
         try {

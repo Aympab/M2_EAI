@@ -9,6 +9,7 @@ import fr.miage.millan.presse.sharedpubpresse.objects.Publicite;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.Resource;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
@@ -32,6 +33,9 @@ public class SenderArchiveVolume {
         return om;
     }
 
+    @Resource(lookup = "jms/ConnectionFactory") 
+    private static ConnectionFactory connectionFactory;
+    
     public void sendJMSMessageToPRESSE_TRANSFERT_ARCHIVE(Object messageData) throws JMSException, NamingException {
         Context c = new InitialContext();
         ConnectionFactory cf = (ConnectionFactory) c.lookup("CONNECTION_FACTORY_M2_EAI");
