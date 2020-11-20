@@ -5,8 +5,8 @@
  */
 package fr.miage.millan.presse.miseSousPresse.services;
 
+import fr.miage.millan.presse.sharedvolume.objects.Titre;
 import fr.miage.millan.presse.sharedvolume.objects.Volume;
-import java.util.ArrayList;
 import javax.ejb.Local;
 
 /**
@@ -16,9 +16,15 @@ import javax.ejb.Local;
 @Local
 public interface AssemblageVolLocal {
     
-    public Volume assemblerVolumeSimple() throws Exception ;
+    public Volume assemblerVolumeSimple(int numeroVolume) throws Exception ;
     
-    
+    /**
+     * Genere un titre avec tous les volumes présents en BD
+     * @param nomTitre
+     * @return
+     * @throws Exception 
+     */
+    public Titre assemblerTitreSimple(String nomTitre) throws Exception;
 //    /**
 //     *Permet de créer un volume en sélectionnant des articles et pubs dans le stockage
 //     * @param numeroVolume

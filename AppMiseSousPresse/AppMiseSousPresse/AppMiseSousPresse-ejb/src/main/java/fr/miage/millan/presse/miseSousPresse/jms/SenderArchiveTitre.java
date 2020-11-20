@@ -5,7 +5,7 @@
  */
 package fr.miage.millan.presse.miseSousPresse.jms;
 
-import fr.miage.millan.presse.sharedpubpresse.objects.Publicite;
+import fr.miage.millan.presse.sharedvolume.objects.Titre;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,10 +26,10 @@ import javax.naming.NamingException;
  *
  * @author aympa
  */
-public class SenderArchiveVolume {
+public class SenderArchiveTitre {
 
     private Message createJMSMessageForPRESSE_TRANSFERT_ARCHIVE(Session session, Object messageData) throws JMSException {
-        ObjectMessage om = session.createObjectMessage((ArrayList<Publicite>)messageData);
+        ObjectMessage om = session.createObjectMessage((ArrayList<Titre>)messageData);
         return om;
     }
 

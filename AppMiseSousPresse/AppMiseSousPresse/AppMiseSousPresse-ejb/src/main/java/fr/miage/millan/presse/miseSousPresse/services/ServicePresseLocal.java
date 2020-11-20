@@ -7,6 +7,7 @@ package fr.miage.millan.presse.miseSousPresse.services;
 
 import fr.miage.millan.presse.sharedpubpresse.objects.Publicite;
 import fr.miage.millan.presse.sharedredactionpresse.objects.Article;
+import fr.miage.millan.presse.sharedvolume.objects.Titre;
 import fr.miage.millan.presse.sharedvolume.objects.Volume;
 import java.util.ArrayList;
 import javax.ejb.Local;
@@ -39,6 +40,11 @@ public interface ServicePresseLocal {
     public ArrayList<Volume> selectionnerVolumePourEnvoi(int idVolume);
     
     public void printAllStock();
+    
+    
+    public void transfererTitresArchive();
+    
+    public ArrayList<Titre> selectionnerTitrePourEnvoi(int idTitre);
     
     //public void transfererVolumeVersDistrib(Volume v);
 }

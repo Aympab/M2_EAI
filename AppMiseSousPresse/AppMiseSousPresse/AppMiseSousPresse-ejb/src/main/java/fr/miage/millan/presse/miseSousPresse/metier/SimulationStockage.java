@@ -7,6 +7,7 @@ package fr.miage.millan.presse.miseSousPresse.metier;
 
 import fr.miage.millan.presse.sharedpubpresse.objects.Publicite;
 import fr.miage.millan.presse.sharedredactionpresse.objects.Article;
+import fr.miage.millan.presse.sharedvolume.objects.Titre;
 import fr.miage.millan.presse.sharedvolume.objects.Volume;
 import java.util.ArrayList;
 
@@ -19,10 +20,12 @@ public final class SimulationStockage {
     private static final ArrayList<Publicite> pubsEnStock = new ArrayList<Publicite>();
     private static final ArrayList<Article> articlesEnStock = new ArrayList<Article>();
     private static final ArrayList<Volume> volumesEnStock = new ArrayList<Volume>();
+    private static final ArrayList<Titre> titresEnStock = new ArrayList<Titre>();
 
     private static int idPub = 0;
     private static int idArt = 0;
     private static int idVol = 0;
+    private static int idTit = 0;
 
     public static void ajouterPub(Publicite p) {
         p.setIdPub(idPub);
@@ -41,6 +44,12 @@ public final class SimulationStockage {
         idVol += 1;
         volumesEnStock.add(v);
     }
+    
+    public static void ajouterTitre(Titre t){
+        t.setId(idTit);
+        idTit += 1;
+        titresEnStock.add(t);
+    }
 
     public static ArrayList<Article> getStockArticle() {
         return articlesEnStock;
@@ -52,5 +61,9 @@ public final class SimulationStockage {
 
     public static ArrayList<Volume> getStockVolume() {
         return volumesEnStock;
+    }
+    
+    public static ArrayList<Titre> getStockTitre(){
+        return titresEnStock;
     }
 }

@@ -10,3 +10,6 @@
 /SharedRedactionPresse/target/
 /SharedPubPresse/target/
 /SharedVolume/target/
+/AppDistribution/AppDistribution-ejb/target/
+/AppDistribution/AppDistribution-web/target/
+/AppDistribution/AppDistribution-ear/target/

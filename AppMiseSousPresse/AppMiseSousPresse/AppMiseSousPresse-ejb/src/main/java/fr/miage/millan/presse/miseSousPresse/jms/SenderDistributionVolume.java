@@ -28,7 +28,7 @@ import javax.naming.NamingException;
 public class SenderDistributionVolume {
 
     private Message createJMSMessageForPRESSE_TRANSFERT_DISTRIB(Session session, Object messageData) throws JMSException {
-        ObjectMessage om = session.createObjectMessage((ArrayList<Volume>)messageData);
+        ObjectMessage om = session.createObjectMessage((ArrayList<Volume>)messageData); //changer en array list de titre
         return om;
     }
 

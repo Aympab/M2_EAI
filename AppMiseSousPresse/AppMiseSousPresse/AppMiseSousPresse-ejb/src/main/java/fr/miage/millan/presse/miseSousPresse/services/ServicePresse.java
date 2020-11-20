@@ -5,12 +5,13 @@
  */
 package fr.miage.millan.presse.miseSousPresse.services;
 
-import fr.miage.millan.presse.miseSousPresse.jms.SenderArchiveVolume;
+import fr.miage.millan.presse.miseSousPresse.jms.SenderArchiveTitre;
 import fr.miage.millan.presse.miseSousPresse.jms.SenderDistributionVolume;
 import fr.miage.millan.presse.miseSousPresse.metier.SimulationStockage;
 import fr.miage.millan.presse.miseSousPresse.jms.SenderNotification;
 import fr.miage.millan.presse.sharedpubpresse.objects.Publicite;
 import fr.miage.millan.presse.sharedredactionpresse.objects.Article;
+import fr.miage.millan.presse.sharedvolume.objects.Titre;
 import fr.miage.millan.presse.sharedvolume.objects.Volume;
 import java.util.ArrayList;
 import javax.ejb.Stateless;
@@ -33,9 +34,10 @@ public class ServicePresse implements ServicePresseLocal {
 
 //    private static ArrayList<Volume> volumesAEnvoyer = genererDonnees();
     private static ArrayList<Volume> volumesAEnvoyer = new ArrayList<Volume>();
+    private static ArrayList<Titre> titresAEnvoyer = new ArrayList<Titre>();
 
     private final SenderNotification sender = new SenderNotification();
-    private final SenderArchiveVolume senderArchive = new SenderArchiveVolume();
+    private final SenderArchiveTitre senderArchive = new SenderArchiveTitre();
     private final SenderDistributionVolume senderDistrib = new SenderDistributionVolume();
 
     @Override
@@ -136,6 +138,28 @@ public class ServicePresse implements ServicePresseLocal {
             }
         }
         return volumesAEnvoyer;
+    }
+
+    @Override
+    public void transfererTitresArchive() {
+        try {
+            senderDistrib.sendJMSMessageToPRESSE_TRANSFERT_DISTRIB(titresAEnvoyer);
+        } catch (JMSException ex) {
+            Logger.getLogger(ServicePresse.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(ServicePresse.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public ArrayList<Titre> selectionnerTitrePourEnvoi(int idTitre) {
+        for (Titre t : SimulationStockage.getStockTitre()) {
+            if(t.getId() == idTitre){
+                titresAEnvoyer.add(t);
+                break;
+            }
+        }
+        return titresAEnvoyer;
     }
 
 }

@@ -6,6 +6,7 @@
 package fr.miage.millan.presse.miseSousPresse.services;
 
 import fr.miage.millan.presse.miseSousPresse.metier.SimulationStockage;
+import fr.miage.millan.presse.sharedvolume.objects.Titre;
 import fr.miage.millan.presse.sharedvolume.objects.Volume;
 import javax.ejb.Stateless;
 
@@ -17,7 +18,7 @@ import javax.ejb.Stateless;
 public class AssemblageVol implements AssemblageVolLocal {
 
     @Override
-    public Volume assemblerVolumeSimple() throws Exception {
+    public Volume assemblerVolumeSimple(int numeroVolume) throws Exception {
 
         Volume volume = new Volume();
 
@@ -33,7 +34,7 @@ public class AssemblageVol implements AssemblageVolLocal {
             throw new Exception("APPPRESSE - ERREUR AssemblageVol - Pas de publicites en stock pour assembler un volume");
         }
 
-        volume.setNumero(1);
+        volume.setNumero(numeroVolume);
         
         sauvegarderVolume(volume);
         return volume;
@@ -41,5 +42,16 @@ public class AssemblageVol implements AssemblageVolLocal {
 
     public void sauvegarderVolume(Volume v) {
         SimulationStockage.ajouterVolume(v);
+    }
+
+    @Override
+    public Titre assemblerTitreSimple(String nomTitre) throws Exception {
+        Titre titre = new Titre();
+        titre.setNom(nomTitre);
+        titre.setListeVolumes(SimulationStockage.getStockVolume());
+        
+        SimulationStockage.ajouterTitre(titre);
+        
+        return titre;
     }
 }
