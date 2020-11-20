@@ -6,42 +6,27 @@
 package fr.miage.millan.presse.archive.entities;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author aympa
  */
 @Entity
-@Table(name = "PUBLICITE")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Publicite.findAll", query = "SELECT p FROM Publicite p")
-    , @NamedQuery(name = "Publicite.findByIdpublicite", query = "SELECT p FROM Publicite p WHERE p.idpublicite = :idpublicite")
-    , @NamedQuery(name = "Publicite.findByNom", query = "SELECT p FROM Publicite p WHERE p.nom = :nom")
-    , @NamedQuery(name = "Publicite.findByContenu", query = "SELECT p FROM Publicite p WHERE p.contenu = :contenu")})
 public class PubliciteBD implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "IDPUBLICITE")
-    private Integer idpublicite;
-    @Size(max = 30)
-    @Column(name = "NOM")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    
     private String nom;
-    @Size(max = 1000)
-    @Column(name = "CONTENU")
+
     private String contenu;
 
     public PubliciteBD() {
@@ -54,16 +39,16 @@ public class PubliciteBD implements Serializable {
 
     
     
-    public PubliciteBD(Integer idpublicite) {
-        this.idpublicite = idpublicite;
-    }
+//    public PubliciteBD(Integer idpublicite) {
+//        this.id = idpublicite;
+//    }
 
     public Integer getIdpublicite() {
-        return idpublicite;
+        return id;
     }
 
     public void setIdpublicite(Integer idpublicite) {
-        this.idpublicite = idpublicite;
+        this.id = id;
     }
 
     public String getNom() {
@@ -85,7 +70,7 @@ public class PubliciteBD implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idpublicite != null ? idpublicite.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -96,7 +81,7 @@ public class PubliciteBD implements Serializable {
             return false;
         }
         PubliciteBD other = (PubliciteBD) object;
-        if ((this.idpublicite == null && other.idpublicite != null) || (this.idpublicite != null && !this.idpublicite.equals(other.idpublicite))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -104,7 +89,7 @@ public class PubliciteBD implements Serializable {
 
     @Override
     public String toString() {
-        return "fr.miage.millan.entities.Publicite[ idpublicite=" + idpublicite + " ]";
+        return "fr.miage.millan.entities.Publicite[ idpublicite=" + id + " ]";
     }
     
 }

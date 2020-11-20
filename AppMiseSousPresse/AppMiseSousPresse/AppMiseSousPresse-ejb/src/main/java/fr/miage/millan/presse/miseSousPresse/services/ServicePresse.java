@@ -31,6 +31,7 @@ public class ServicePresse implements ServicePresseLocal {
     @Resource(mappedName = "CONNECTION_FACTORY_M2_EAI")
     private ConnectionFactory CONNECTION_FACTORY_M2_EAI;
 
+//    private static ArrayList<Volume> volumesAEnvoyer = genererDonnees();
     private static ArrayList<Volume> volumesAEnvoyer = new ArrayList<Volume>();
 
     private final SenderNotification sender = new SenderNotification();
@@ -93,7 +94,6 @@ public class ServicePresse implements ServicePresseLocal {
             System.out.println("\t\t\tPubs : ");
             for (Publicite p : v.getListePublicites()) {
                 System.out.println("\t\t\t\tID : " + p.getIdPub() + "\n\t\t\t\t\t" + p.getNom() + " - " + p.getContenu());
-
             }
         }
 
@@ -129,12 +129,12 @@ public class ServicePresse implements ServicePresseLocal {
 
     @Override
     public ArrayList<Volume> selectionnerVolumePourEnvoi(int idVolume) {
-        for(Volume v : SimulationStockage.getStockVolume()){
-            if(v.getId() == idVolume){
+        for (Volume v : SimulationStockage.getStockVolume()) {
+            if (v.getId() == idVolume) {
                 volumesAEnvoyer.add(v);
                 break;
             }
-        }        
+        }
         return volumesAEnvoyer;
     }
 

@@ -35,6 +35,11 @@ public class VolumeBD implements Serializable {
         this.listePublicites = listePublicites;
     }
 
+    public VolumeBD(){
+        this.numero = -1;
+        this.listeArticles = new ArrayList<ArticleBD>();
+        this.listePublicites = new ArrayList<PubliciteBD>();
+    }
     //JEE
     private static final long serialVersionUID = 1L;
     @Id

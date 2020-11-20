@@ -15,9 +15,10 @@ import java.util.ArrayList;
  * @author aympa
  */
 public class Volume implements Serializable {
-     //ATTRIBUTS
+    //ATTRIBUTS
+
     private int numero;
-    
+
     private ArrayList<Article> listeArticles;
 
     private ArrayList<Publicite> listePublicites;
@@ -55,6 +56,21 @@ public class Volume implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        String ret = "numero : " + this.getNumero();
+
+        System.out.println("\t\t\tArticles : ");
+        this.getListeArticles().forEach((a) -> {
+            System.out.println("\t\t\t\tID : " + a.getId() + "\n\t\t\t\t\t" + a.getAuteur() + " - " + a.getNom() + " - " + a.getContenu());
+        });
+
+        System.out.println("\t\t\tPubs : ");
+        this.getListePublicites().forEach((p) -> {
+            System.out.println("\t\t\t\tID : " + p.getIdPub() + "\n\t\t\t\t\t" + p.getNom() + " - " + p.getContenu());
+        });
+
+        return ret;
+    }
 }

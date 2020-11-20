@@ -7,6 +7,7 @@ package fr.miage.millan.presse.archive.business;
 
 import fr.miage.millan.presse.archive.entities.VolumeBD;
 import fr.miage.millan.presse.sharedvolume.objects.Volume;
+import java.util.ArrayList;
 import javax.ejb.Local;
 
 /**
@@ -15,5 +16,12 @@ import javax.ejb.Local;
  */
 @Local
 public interface ServiceArchivageLocal {
-    public VolumeBD transformerVolumeEnEntity(Volume v);
+    //public VolumeBD sauvegarderVolume(Volume v);
+    
+    /**
+     * Va gérer les volumes lorsqu'on recoit depuis la queue JMS
+     * @param volumes 
+     */
+    public void traiterReceptionVolumes(ArrayList<Volume> volumes);
+    
 }
