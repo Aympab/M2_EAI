@@ -7,6 +7,7 @@ package fr.miage.millan.presse.archive.jms;
 
 import fr.miage.millan.presse.archive.business.ServiceArchivage;
 import fr.miage.millan.presse.archive.business.ServiceArchivageLocal;
+import fr.miage.millan.presse.sharedvolume.objects.Titre;
 import fr.miage.millan.presse.sharedvolume.objects.Volume;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -43,11 +44,11 @@ public class RecepteurVolume implements MessageListener {
             ObjectMessage object = (ObjectMessage) message;
 
             try {
-                ArrayList<Volume> vols = (ArrayList<Volume>) object.getObject();
+                ArrayList<Titre> titres = (ArrayList<Titre>) object.getObject();
 
                 //APPEL METIER  
                 try {
-                    serviceArchivage.traiterReceptionVolumes(vols);
+                    serviceArchivage.traiterReceptionTitres(titres);
 
                 } catch (Exception e) {
                     System.out.println("EXCEPTION SERVICE ARCHIVAGE !!!!!");

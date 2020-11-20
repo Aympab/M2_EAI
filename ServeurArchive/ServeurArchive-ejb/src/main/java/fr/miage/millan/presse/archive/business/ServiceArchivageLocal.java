@@ -5,6 +5,7 @@
  */
 package fr.miage.millan.presse.archive.business;
 
+import fr.miage.millan.presse.sharedvolume.objects.Titre;
 import fr.miage.millan.presse.sharedvolume.objects.Volume;
 import java.util.ArrayList;
 import javax.ejb.Local;
@@ -23,4 +24,5 @@ public interface ServiceArchivageLocal {
      */
     public void traiterReceptionVolumes(ArrayList<Volume> volumes);
     
+    public void traiterReceptionTitres(ArrayList<Titre> titres);
 }

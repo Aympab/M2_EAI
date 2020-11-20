@@ -5,8 +5,11 @@
  */
 package fr.miage.millan.presse.archive.business;
 
+import fr.miage.millan.presse.archive.entities.TitreBD;
 import fr.miage.millan.presse.archive.entities.VolumeBD;
+import fr.miage.millan.presse.archive.facades.TitreBDFacadeLocal;
 import fr.miage.millan.presse.archive.facades.VolumeBDFacadeLocal;
+import fr.miage.millan.presse.sharedvolume.objects.Titre;
 import fr.miage.millan.presse.sharedvolume.objects.Volume;
 import java.util.ArrayList;
 import javax.ejb.EJB;
@@ -19,6 +22,8 @@ import javax.ejb.Stateless;
 @Stateless
 public class ServiceArchivage implements ServiceArchivageLocal {
 
+    @EJB
+    private TitreBDFacadeLocal titreBDFacade;
     
     @EJB
     private VolumeBDFacadeLocal volumeFacade;
@@ -37,6 +42,16 @@ public class ServiceArchivage implements ServiceArchivageLocal {
         for(Volume v : volumes){
             System.out.println("APPARCHIVE - Enregistrement volume " + v.toString());
             this.sauvegarderVolume(v);
+        }
+    }
+
+    @Override
+    public void traiterReceptionTitres(ArrayList<Titre> titres) {
+        for(Titre t : titres){
+            System.out.println("APPARCHIVE - Enregistrement titre" + t.toString());
+            TitreBD titre = GestionEntity.genererTitreBD(t);
+            
+            titreBDFacade.create(titre);
         }
     }
 

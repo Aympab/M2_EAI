@@ -7,9 +7,11 @@ package fr.miage.millan.presse.archive.business;
 
 import fr.miage.millan.presse.archive.entities.ArticleBD;
 import fr.miage.millan.presse.archive.entities.PubliciteBD;
+import fr.miage.millan.presse.archive.entities.TitreBD;
 import fr.miage.millan.presse.archive.entities.VolumeBD;
 import fr.miage.millan.presse.sharedpubpresse.objects.Publicite;
 import fr.miage.millan.presse.sharedredactionpresse.objects.Article;
+import fr.miage.millan.presse.sharedvolume.objects.Titre;
 import fr.miage.millan.presse.sharedvolume.objects.Volume;
 import java.util.ArrayList;
 
@@ -20,6 +22,17 @@ import java.util.ArrayList;
  */
 public final class GestionEntity {
 
+    public static TitreBD genererTitreBD(Titre titre){
+        TitreBD titreBD = new TitreBD();
+        titreBD.setNom(titre.getNom());
+        
+        for(Volume v : titre.getListeVolumes()){
+            titreBD.getListeVolumes().add(genererVolumeBD(v));
+        }
+        
+        return titreBD;
+    }
+    
     public static PubliciteBD genererPubBD(Publicite pub) {
         PubliciteBD pubBD = new PubliciteBD();
 
