@@ -5,7 +5,6 @@
  */
 package fr.miage.millan.presse.archive.business;
 
-import fr.miage.millan.presse.archive.entities.VolumeBD;
 import fr.miage.millan.presse.sharedvolume.objects.Volume;
 import java.util.ArrayList;
 import javax.ejb.Local;

@@ -29,13 +29,13 @@ public class PubliciteBD implements Serializable {
 
     private String contenu;
 
-    public PubliciteBD() {
-    }
-
-    public PubliciteBD(String nom, String contenu) {
-        this.nom = nom;
-        this.contenu = contenu;
-    }
+//    public PubliciteBD() {
+//    }
+////
+////    public PubliciteBD(String nom, String contenu) {
+////        this.nom = nom;
+////        this.contenu = contenu;
+////    }
 
     
     

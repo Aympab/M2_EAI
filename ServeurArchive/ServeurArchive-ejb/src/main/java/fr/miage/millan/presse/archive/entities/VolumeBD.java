@@ -7,6 +7,7 @@ package fr.miage.millan.presse.archive.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,23 +24,23 @@ public class VolumeBD implements Serializable {
     //ATTRIBUTS
     private int numero;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST)
     private ArrayList<ArticleBD> listeArticles;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST)
     private ArrayList<PubliciteBD> listePublicites;
 
-    public VolumeBD(int numero, ArrayList<ArticleBD> listeArticles, ArrayList<PubliciteBD> listePublicites) {
-        this.numero = numero;
-        this.listeArticles = listeArticles;
-        this.listePublicites = listePublicites;
-    }
-
-    public VolumeBD(){
-        this.numero = -1;
-        this.listeArticles = new ArrayList<ArticleBD>();
-        this.listePublicites = new ArrayList<PubliciteBD>();
-    }
+//    public VolumeBD(int numero, ArrayList<ArticleBD> listeArticles, ArrayList<PubliciteBD> listePublicites) {
+//        this.numero = numero;
+//        this.listeArticles = listeArticles;
+//        this.listePublicites = listePublicites;
+//    }
+//
+//    public VolumeBD(){
+//        this.numero = -1;
+//        this.listeArticles = new ArrayList<ArticleBD>();
+//        this.listePublicites = new ArrayList<PubliciteBD>();
+//    }
     //JEE
     private static final long serialVersionUID = 1L;
     @Id

@@ -6,7 +6,7 @@
 package fr.miage.millan.presse.archive.business;
 
 import fr.miage.millan.presse.archive.entities.VolumeBD;
-import fr.miage.millan.presse.archive.facades.VolumeBDFacade;
+import fr.miage.millan.presse.archive.facades.VolumeBDFacadeLocal;
 import fr.miage.millan.presse.sharedvolume.objects.Volume;
 import java.util.ArrayList;
 import javax.ejb.EJB;
@@ -19,16 +19,17 @@ import javax.ejb.Stateless;
 @Stateless
 public class ServiceArchivage implements ServiceArchivageLocal {
 
+    
     @EJB
-    private VolumeBDFacade volumeFacade;
-
+    private VolumeBDFacadeLocal volumeFacade;
+    
 //    @Override
     public VolumeBD sauvegarderVolume(Volume v) {
         VolumeBD vol = GestionEntity.genererVolumeBD(v);
                 
         volumeFacade.create(vol);
         
-        return null;
+        return vol;
     }
 
     @Override

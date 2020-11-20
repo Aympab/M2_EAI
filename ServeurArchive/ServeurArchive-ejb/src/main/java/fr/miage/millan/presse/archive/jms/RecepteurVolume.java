@@ -6,6 +6,7 @@
 package fr.miage.millan.presse.archive.jms;
 
 import fr.miage.millan.presse.archive.business.ServiceArchivage;
+import fr.miage.millan.presse.archive.business.ServiceArchivageLocal;
 import fr.miage.millan.presse.sharedvolume.objects.Volume;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -28,28 +29,34 @@ import javax.jms.ObjectMessage;
 public class RecepteurVolume implements MessageListener {
 
     @EJB
-    private ServiceArchivage serviceArchivage;
+    private ServiceArchivageLocal serviceArchivage;
 
-    public RecepteurVolume() {
-    }
-
+//    @EJB
+//    private ServiceArchivage serviceArchivage;// = new ServiceArchivage();
     @Override
     public void onMessage(Message message) {
 //        System.out.println("APPARCHIVE - OnMessage, OBJ : " + message);
-
+        System.out.println("SALUT");
         if (message instanceof ObjectMessage) {
+            System.out.println("SALUT OBJECT MESSAGE");
+
             ObjectMessage object = (ObjectMessage) message;
 
             try {
                 ArrayList<Volume> vols = (ArrayList<Volume>) object.getObject();
 
-                //APPEL METIER                
-                serviceArchivage.traiterReceptionVolumes(vols);
+                //APPEL METIER  
+                try {
+                    serviceArchivage.traiterReceptionVolumes(vols);
 
-            } catch (JMSException ex) {
-                Logger.getLogger(RecepteurVolume.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception e) {
+                    System.out.println("EXCEPTION SERVICE ARCHIVAGE !!!!!");
+                }
+
+            } catch (Exception e) {
+                System.out.println("APPARCHIVE ERREUR " + e.getMessage());
+//                Logger.getLogger(RecepteurVolume.class.getName()).log(Level.SEVERE, null, ex);
             }
-
         } else if (message != null) {
             System.out.println("APPARCHIVE - Object type is not ObjectMessage");
         }
