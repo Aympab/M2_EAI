@@ -5,6 +5,10 @@
  */
 package fr.miage.millan.presse.serveurWeb.services;
 
+import fr.miage.millan.presse.sharedvolume.objects.Titre;
+import fr.miage.millan.presse.sharedvolume.objects.Volume;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -14,6 +18,12 @@ import javax.ejb.Local;
 @Local
 public interface ServiceRechercheLocal {
 
-    public void getJsonTitre(String nom);
+    public Titre getJsonTitreNom(String nom);
+
+    public Titre getJsonTitreMotsClefs(List<String> motsClefs);
+
+    public ArrayList<Titre> getJsonTitres();
+
+    public List<Volume> getJsonVolumes(Long idTitre);
     
 }

@@ -5,6 +5,10 @@
  */
 package fr.miage.millan.presse.serveurWeb.services;
 
+import fr.miage.millan.presse.sharedvolume.objects.Titre;
+import fr.miage.millan.presse.sharedvolume.objects.Volume;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateless;
 
 /**
@@ -14,13 +18,28 @@ import javax.ejb.Stateless;
 @Stateless
 public class ServiceRecherche implements ServiceRechercheLocal {
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
-    public void getJsonTitre(String nom){
-        //Cherche le titre dans le stockage
-        //Afficher le titre
-        
-        
-//        return new Titre(rqhiqsjoqsfjosif);
+    @Override
+    public Titre getJsonTitreNom(String nom) {
+        //Salut Astrid;
+        return new Titre();
     }
+
+    @Override
+    public Titre getJsonTitreMotsClefs(List<String> motsClefs) {
+        //Salut Astrid;
+        return new Titre();
+    }
+
+    @Override
+    public ArrayList<Titre> getJsonTitres() {
+        //Salut Astrid;
+        return new ArrayList<Titre>();
+    }
+
+    @Override
+    public List<Volume> getJsonVolumes(Long idTitre) {
+        //Salut Astrid;
+        return new ArrayList<Volume>();
+    }
+
 }
