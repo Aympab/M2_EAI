@@ -6,6 +6,7 @@
 package fr.miage.millan.presse.serveurWeb.services;
 
 import fr.miage.millan.presse.serveurWeb.metier.SimulationStockage;
+import fr.miage.millan.presse.sharedredactionpresse.objects.Article;
 import fr.miage.millan.presse.sharedvolume.objects.Titre;
 import fr.miage.millan.presse.sharedvolume.objects.Volume;
 import java.util.ArrayList;
@@ -27,9 +28,21 @@ public class ServiceRecherche implements ServiceRechercheLocal {
     }
 
     @Override
-    public Titre getJsonTitreMotsClefs(List<String> motsClefs) {
-        //Salut Astrid;
-        return new Titre();
+    public ArrayList<Titre> getJsonTitreMotsClefs(String motClef) {
+        
+        ArrayList<Titre> liste = new ArrayList();
+        
+        for(Titre t : listeTitres){
+            for (Volume v : t.getListeVolumes()) {
+                for (Article a : v.getListeArticles()) {
+                    if (a.getMotClefs().contains(motClef)){
+                        liste.add(t);
+                    }
+                }
+            }
+        }
+        
+        return liste;
     }
 
     @Override

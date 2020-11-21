@@ -22,7 +22,7 @@ public interface ServiceRechercheLocal {
     
     public Titre getJsonTitreParNom(String nom);
 
-    public Titre getJsonTitreMotsClefs(List<String> motsClefs);
+    public ArrayList<Titre> getJsonTitreMotsClefs(String motsClefs);
 
     public ArrayList<Titre> getJsonTitres();
 

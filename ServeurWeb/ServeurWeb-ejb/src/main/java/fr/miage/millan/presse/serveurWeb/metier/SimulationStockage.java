@@ -10,6 +10,7 @@ import fr.miage.millan.presse.sharedredactionpresse.objects.Article;
 import fr.miage.millan.presse.sharedvolume.objects.Titre;
 import fr.miage.millan.presse.sharedvolume.objects.Volume;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -29,9 +30,20 @@ public final class SimulationStockage {
         titresEnStock.add(t);
         
         Article a = new Article("ARTICLE 1", "CONTENU ARTICLE 1", "AUTEUR ARTICLE 1");
-        Publicite p = new Publicite("PUBLICITE 1", "CONTENU PUBLICITE 1");
+        String[] motclef = {"mots1", "mots2", "mots3"};
+        ArrayList<String> listeMotsClefs = new ArrayList<String>(Arrays.asList(motclef));
+        a.setMotClefs(listeMotsClefs);
+        
         Article a2 = new Article("ARTICLE 2", "CONTENU ARTICLE 2", "AUTEUR ARTICLE 2");
+        String[] motclef_2 = {"bou1", "bou2", "bou3"};
+        ArrayList<String> listeMotsClefs2 = new ArrayList<String>(Arrays.asList(motclef_2));
+        a2.setMotClefs(listeMotsClefs2);
+        
+        Publicite p = new Publicite("PUBLICITE 1", "CONTENU PUBLICITE 1");
         Publicite p2 = new Publicite("PUBLICITE 2", "CONTENU PUBLICITE 2");
+        
+
+        
         
         ArrayList<Article> listeArticles = new ArrayList();
         ArrayList<Publicite> listePublicites = new ArrayList();
