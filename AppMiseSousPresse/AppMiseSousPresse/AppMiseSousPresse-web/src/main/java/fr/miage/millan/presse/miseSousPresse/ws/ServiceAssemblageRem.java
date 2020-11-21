@@ -8,6 +8,7 @@ package fr.miage.millan.presse.miseSousPresse.ws;
 import fr.miage.millan.presse.miseSousPresse.services.AssemblageVolLocal;
 import fr.miage.millan.presse.sharedvolume.objects.Titre;
 import fr.miage.millan.presse.sharedvolume.objects.Volume;
+import java.util.ArrayList;
 import javax.ejb.EJB;
 import javax.jws.WebService;
 import javax.ejb.Stateless;
@@ -16,11 +17,11 @@ import javax.jws.WebParam;
 
 /**
  *
- * @author aympa
+ * @author igouane
  */
-@WebService(serviceName = "ServiceAssemblageRemote")
+@WebService(serviceName = "ServiceAssemblageRem")
 @Stateless()
-public class ServiceAssemblageRemote {
+public class ServiceAssemblageRem {
 
     @EJB
     private AssemblageVolLocal ejbRef;// Add business logic below. (Right-click in editor and choose
@@ -35,6 +36,10 @@ public class ServiceAssemblageRemote {
     public Titre assemblerTitreSimple(@WebParam(name = "nomTitre") String nomTitre) throws Exception {
         return ejbRef.assemblerTitreSimple(nomTitre);
     }
-     
+
+    @WebMethod(operationName = "assemblerVolumeComplexe")
+    public Volume assemblerVolumeComplexe(@WebParam(name = "numeroVolume") int numeroVolume, @WebParam(name = "listeIdsArticles") ArrayList<Integer> listeIdsArticles, @WebParam(name = "listeIdsPubs") ArrayList<Integer> listeIdsPubs) throws Exception {
+        return ejbRef.assemblerVolumeComplexe(numeroVolume, listeIdsArticles, listeIdsPubs);
+    }
     
 }
