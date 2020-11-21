@@ -32,31 +32,21 @@ public class RecepteurVolume implements MessageListener {
     @EJB
     private ServiceArchivageLocal serviceArchivage;
 
-//    @EJB
-//    private ServiceArchivage serviceArchivage;// = new ServiceArchivage();
     @Override
     public void onMessage(Message message) {
-//        System.out.println("APPARCHIVE - OnMessage, OBJ : " + message);
-        System.out.println("SALUT");
-        if (message instanceof ObjectMessage) {
-            System.out.println("SALUT OBJECT MESSAGE");
 
+        if (message instanceof ObjectMessage) {
             ObjectMessage object = (ObjectMessage) message;
 
             try {
                 ArrayList<Titre> titres = (ArrayList<Titre>) object.getObject();
 
                 //APPEL METIER  
-                try {
-                    serviceArchivage.traiterReceptionTitres(titres);
-
-                } catch (Exception e) {
-                    System.out.println("EXCEPTION SERVICE ARCHIVAGE !!!!!");
-                }
+                serviceArchivage.traiterReceptionTitres(titres);
 
             } catch (Exception e) {
                 System.out.println("APPARCHIVE ERREUR " + e.getMessage());
-//                Logger.getLogger(RecepteurVolume.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(RecepteurVolume.class.getName()).log(Level.SEVERE, null, e);
             }
         } else if (message != null) {
             System.out.println("APPARCHIVE - Object type is not ObjectMessage");

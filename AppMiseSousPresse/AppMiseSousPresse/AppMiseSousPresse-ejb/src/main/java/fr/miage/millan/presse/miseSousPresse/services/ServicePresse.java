@@ -143,7 +143,7 @@ public class ServicePresse implements ServicePresseLocal {
     @Override
     public void transfererTitresArchive() {
         try {
-            senderDistrib.sendJMSMessageToPRESSE_TRANSFERT_DISTRIB(titresAEnvoyer);
+            senderArchive.sendJMSMessageToPRESSE_TRANSFERT_ARCHIVE(titresAEnvoyer);
         } catch (JMSException ex) {
             Logger.getLogger(ServicePresse.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NamingException ex) {

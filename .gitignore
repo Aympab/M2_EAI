@@ -14,3 +14,5 @@
 /AppDistribution/AppDistribution-web/target/
 /AppDistribution/AppDistribution-ear/target/
 /ServeurWeb/ServeurWeb-ejb/target/
+/ServeurWeb/ServeurWeb-web/target/
+/ServeurWeb/ServeurWeb-ear/target/

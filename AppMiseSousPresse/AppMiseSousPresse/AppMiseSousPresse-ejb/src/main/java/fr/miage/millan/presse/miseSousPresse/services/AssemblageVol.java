@@ -72,7 +72,13 @@ public class AssemblageVol implements AssemblageVolLocal {
 
     @Override
     public Titre assemblerTitreSimple(String nomTitre) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Titre titre = new Titre();
+        titre.setNom(nomTitre);
+        titre.setListeVolumes(SimulationStockage.getStockVolume());
+        
+        SimulationStockage.ajouterTitre(titre);
+        
+        return titre;
     }
     
 }

@@ -7,11 +7,14 @@ C:\Users\aympa\Documents\M2_EAI_FullProject\M2_EAI\ServeurArchive\ServeurArchive
 C:\Users\aympa\Documents\M2_EAI_FullProject\M2_EAI\ServeurArchive\ServeurArchive-ejb\src\main\java\fr\miage\millan\presse\archive\entities\ArticleBD.java
 C:\Users\aympa\Documents\M2_EAI_FullProject\M2_EAI\ServeurArchive\ServeurArchive-ejb\src\main\java\fr\miage\millan\presse\archive\entities\TitreBD.java
 C:\Users\aympa\Documents\M2_EAI_FullProject\M2_EAI\ServeurArchive\ServeurArchive-ejb\src\main\java\fr\miage\millan\presse\archive\facades\ArticleBDFacade.java
+C:\Users\aympa\Documents\M2_EAI_FullProject\M2_EAI\ServeurArchive\ServeurArchive-ejb\src\main\java\fr\miage\millan\presse\archive\business\ServiceDiffusion.java
 C:\Users\aympa\Documents\M2_EAI_FullProject\M2_EAI\ServeurArchive\ServeurArchive-ejb\src\main\java\fr\miage\millan\presse\archive\facades\AbstractFacade.java
+C:\Users\aympa\Documents\M2_EAI_FullProject\M2_EAI\ServeurArchive\ServeurArchive-ejb\src\main\java\fr\miage\millan\presse\archive\jms\SenderTitres.java
 C:\Users\aympa\Documents\M2_EAI_FullProject\M2_EAI\ServeurArchive\ServeurArchive-ejb\src\main\java\fr\miage\millan\presse\archive\business\ServiceArchivage.java
 C:\Users\aympa\Documents\M2_EAI_FullProject\M2_EAI\ServeurArchive\ServeurArchive-ejb\src\main\java\fr\miage\millan\presse\archive\facades\VolumeBDFacade.java
 C:\Users\aympa\Documents\M2_EAI_FullProject\M2_EAI\ServeurArchive\ServeurArchive-ejb\src\main\java\fr\miage\millan\presse\archive\business\GestionEntity.java
 C:\Users\aympa\Documents\M2_EAI_FullProject\M2_EAI\ServeurArchive\ServeurArchive-ejb\src\main\java\fr\miage\millan\presse\archive\business\ServiceArchivageLocal.java
 C:\Users\aympa\Documents\M2_EAI_FullProject\M2_EAI\ServeurArchive\ServeurArchive-ejb\src\main\java\fr\miage\millan\presse\archive\facades\PubliciteBDFacade.java
 C:\Users\aympa\Documents\M2_EAI_FullProject\M2_EAI\ServeurArchive\ServeurArchive-ejb\src\main\java\fr\miage\millan\presse\archive\facades\TitreBDFacadeLocal.java
+C:\Users\aympa\Documents\M2_EAI_FullProject\M2_EAI\ServeurArchive\ServeurArchive-ejb\src\main\java\fr\miage\millan\presse\archive\business\ServiceDiffusionLocal.java
 C:\Users\aympa\Documents\M2_EAI_FullProject\M2_EAI\ServeurArchive\ServeurArchive-ejb\src\main\java\fr\miage\millan\presse\archive\facades\ArticleBDFacadeLocal.java
