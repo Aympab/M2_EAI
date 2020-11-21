@@ -19,9 +19,8 @@ import javax.ejb.Stateless;
 public class ServiceRecherche implements ServiceRechercheLocal {
 
     @Override
-    public Titre getJsonTitreNom(String nom) {
-        //Salut Astrid;
-        return new Titre();
+    public String getJsonTitre() {
+        return "Bonjour";
     }
 
     @Override
