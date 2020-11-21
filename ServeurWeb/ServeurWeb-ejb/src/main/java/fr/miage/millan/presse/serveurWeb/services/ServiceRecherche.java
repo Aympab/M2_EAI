@@ -5,6 +5,7 @@
  */
 package fr.miage.millan.presse.serveurWeb.services;
 
+import fr.miage.millan.presse.serveurWeb.metier.SimulationStockage;
 import fr.miage.millan.presse.sharedvolume.objects.Titre;
 import fr.miage.millan.presse.sharedvolume.objects.Volume;
 import java.util.ArrayList;
@@ -17,10 +18,12 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class ServiceRecherche implements ServiceRechercheLocal {
+    
+    ArrayList<Titre> listeTitres = SimulationStockage.getStockTitre();
 
     @Override
-    public String getJsonTitre() {
-        return "Bonjour";
+    public ArrayList<Titre> getJsonTitre() {
+        return listeTitres;
     }
 
     @Override
@@ -39,6 +42,19 @@ public class ServiceRecherche implements ServiceRechercheLocal {
     public List<Volume> getJsonVolumes(Long idTitre) {
         //Salut Astrid;
         return new ArrayList<Volume>();
+    }
+
+    @Override
+    public Titre getJsonTitreParNom(String nom) {
+        Titre titre = null;
+        
+        for (int i = 0; i < listeTitres.size(); i++) { 		
+            if (listeTitres.get(i).getNom().equals(nom)){
+                titre = listeTitres.get(i);
+            }
+        }
+        
+        return titre;
     }
 
 }

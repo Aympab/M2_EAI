@@ -18,7 +18,9 @@ import javax.ejb.Local;
 @Local
 public interface ServiceRechercheLocal {
 
-    public String getJsonTitre();
+    public ArrayList<Titre> getJsonTitre();
+    
+    public Titre getJsonTitreParNom(String nom);
 
     public Titre getJsonTitreMotsClefs(List<String> motsClefs);
 

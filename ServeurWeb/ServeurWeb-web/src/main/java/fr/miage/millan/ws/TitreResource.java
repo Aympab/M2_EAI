@@ -5,6 +5,7 @@
  */
 package fr.miage.millan.ws;
 
+import com.google.gson.Gson;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ws.rs.core.Context;
@@ -17,6 +18,7 @@ import javax.ws.rs.PUT;
 import javax.enterprise.context.RequestScoped;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -32,11 +34,15 @@ public class TitreResource {
 
     @Context
     private UriInfo context;
+    
+    // Convertisseur JSON
+    private Gson gson;
 
     /**
      * Creates a new instance of TitreResource
      */
     public TitreResource() {
+        this.gson = new Gson();
     }
 
     /**
@@ -44,9 +50,16 @@ public class TitreResource {
      * @return an instance of java.lang.String
      */
     @GET
-    @Produces(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
     public String getJsonTitre() {
-        return serviceRecherche.getJsonTitre();
+        return this.gson.toJson(this.serviceRecherche.getJsonTitre());
+    }
+    
+    @GET
+    @Path("{nom}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getJsonTitreParNom(@PathParam("nom") String nom) {
+        return this.gson.toJson(this.serviceRecherche.getJsonTitreParNom(nom));
     }
 
     /**
@@ -61,7 +74,7 @@ public class TitreResource {
     private fr.miage.millan.presse.serveurWeb.services.ServiceRechercheLocal lookupServiceRechercheLocal() {
         try {
             javax.naming.Context c = new InitialContext();
-            return (fr.miage.millan.presse.serveurWeb.services.ServiceRechercheLocal) c.lookup("java:global/ServeurWeb-ear/ServeurWeb-ejb-1.0/ServiceRecherche!fr.miage.millan.presse.serveurWeb.services.ServiceRechercheLocal");
+            return (fr.miage.millan.presse.serveurWeb.services.ServiceRechercheLocal) c.lookup("java:global/ServeurWeb-ear/ServeurWeb-ejb-1.0/ServiceRecherche");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);
