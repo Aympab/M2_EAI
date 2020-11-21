@@ -63,6 +63,10 @@ public final class SimulationStockage {
         return volumesEnStock;
     }
     
+    public static ArrayList<Titre> getStockTitre(){
+        return titresEnStock;
+    }
+    
     public static ArrayList<Article> getStockArticleByListId(ArrayList<Integer> listIdsArticles) {
         ArrayList<Article> listArticles = new ArrayList<>();
         
