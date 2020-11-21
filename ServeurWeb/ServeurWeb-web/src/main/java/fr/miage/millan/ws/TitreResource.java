@@ -56,7 +56,7 @@ public class TitreResource {
     }
     
     @GET
-    @Path("{nom}")
+    @Path("titreParNom/{nom}")
     @Produces(MediaType.APPLICATION_JSON)
     public String getJsonTitreParNom(@PathParam("nom") String nom) {
         return this.gson.toJson(this.serviceRecherche.getJsonTitreParNom(nom));

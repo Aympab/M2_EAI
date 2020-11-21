@@ -74,6 +74,7 @@ public final class SimulationStockage {
         t2.setId(idTitre);
         idTitre += 1;
         titresEnStock.add(t2);
+        t2.setListeVolumes(new ArrayList<Volume>());
     }
     
     public static ArrayList<Titre> getStockTitre() {
