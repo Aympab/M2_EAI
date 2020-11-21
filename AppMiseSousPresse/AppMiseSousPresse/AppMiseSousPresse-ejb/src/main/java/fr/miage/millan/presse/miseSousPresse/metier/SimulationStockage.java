@@ -66,4 +66,31 @@ public final class SimulationStockage {
     public static ArrayList<Titre> getStockTitre(){
         return titresEnStock;
     }
+    
+    public static ArrayList<Article> getStockArticleByListId(ArrayList<Integer> listIdsArticles) {
+        ArrayList<Article> listArticles = new ArrayList<>();
+        
+        for(Integer idArticle : listIdsArticles){
+            for(Article article : articlesEnStock){
+                if(idArticle == article.getId()){
+                    listArticles.add(article);
+                }
+            }
+        }
+        return listArticles;
+    }
+
+    public static ArrayList<Publicite> getStockPubByListIds(ArrayList<Integer> listeIdsPubs) {
+         ArrayList<Publicite> listPubs = new ArrayList<>();
+        
+        for(Integer idPubs : listeIdsPubs){
+            for(Publicite pub : pubsEnStock){
+                if(idPubs == pub.getIdPub()){
+                    listPubs.add(pub);
+                }
+            }
+        }
+        return listPubs;
+    }
+    
 }
