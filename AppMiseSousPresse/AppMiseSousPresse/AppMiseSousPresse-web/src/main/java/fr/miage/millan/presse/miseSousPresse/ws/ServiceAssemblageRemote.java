@@ -35,5 +35,6 @@ public class ServiceAssemblageRemote {
     public Titre assemblerTitreSimple(@WebParam(name = "nomTitre") String nomTitre) throws Exception {
         return ejbRef.assemblerTitreSimple(nomTitre);
     }
+     
     
 }
