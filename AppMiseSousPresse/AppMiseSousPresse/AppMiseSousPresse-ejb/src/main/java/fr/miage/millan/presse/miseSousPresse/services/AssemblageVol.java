@@ -8,6 +8,7 @@ package fr.miage.millan.presse.miseSousPresse.services;
 import fr.miage.millan.presse.miseSousPresse.metier.SimulationStockage;
 import fr.miage.millan.presse.sharedpubpresse.objects.Publicite;
 import fr.miage.millan.presse.sharedredactionpresse.objects.Article;
+import fr.miage.millan.presse.sharedvolume.objects.Titre;
 import fr.miage.millan.presse.sharedvolume.objects.Volume;
 import java.util.ArrayList;
 import javax.ejb.Stateless;
@@ -67,6 +68,11 @@ public class AssemblageVol implements AssemblageVolLocal {
         volume.setNumero(numeroVolume);
         sauvegarderVolume(volume);
         return volume;
+    }
+
+    @Override
+    public Titre assemblerTitreSimple(String nomTitre) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
