@@ -24,8 +24,6 @@ public interface ServiceRechercheLocal {
 
     public ArrayList<Titre> getJsonTitreMotsClefs(String motsClefs);
 
-    public ArrayList<Titre> getJsonTitres();
-
-    public List<Volume> getJsonVolumes(Long idTitre);
+    public Volume getJsonVolume(String nomTitre, int numeroVolume);
     
 }

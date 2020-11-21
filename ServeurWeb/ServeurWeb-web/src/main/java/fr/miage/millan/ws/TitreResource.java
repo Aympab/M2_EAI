@@ -68,6 +68,15 @@ public class TitreResource {
     public String getJsonTitreParMotClef(@PathParam("motclef") String motclef) {
         return this.gson.toJson(this.serviceRecherche.getJsonTitreMotsClefs(motclef));
     }
+    
+    @GET
+    @Path("volumeParTitre/{nomTitre}/{numeroVolume}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getJsonVolume(@PathParam("nomTitre") String nomTitre, @PathParam("numeroVolume") int numeroVolume) {
+        return this.gson.toJson(this.serviceRecherche.getJsonVolume( nomTitre, numeroVolume));
+    }
+    
+    
 
     /**
      * PUT method for updating or creating an instance of TitreResource

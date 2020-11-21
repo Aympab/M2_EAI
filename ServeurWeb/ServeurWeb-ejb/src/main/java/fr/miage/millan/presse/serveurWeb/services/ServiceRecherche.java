@@ -45,16 +45,23 @@ public class ServiceRecherche implements ServiceRechercheLocal {
         return liste;
     }
 
-    @Override
-    public ArrayList<Titre> getJsonTitres() {
-        //Salut Astrid;
-        return new ArrayList<Titre>();
-    }
 
     @Override
-    public List<Volume> getJsonVolumes(Long idTitre) {
-        //Salut Astrid;
-        return new ArrayList<Volume>();
+    public Volume getJsonVolume(String nomTitre, int numeroVolume) {
+        Volume volume = null;
+        
+        for(Titre t : listeTitres){
+            if (t.getNom().equals(nomTitre)){
+                for(Volume v : t.getListeVolumes()){
+                    if (v.getNumero() == numeroVolume){
+                        volume = v;
+                    }
+                }
+            }
+            
+        }
+        
+        return volume;
     }
 
     @Override
