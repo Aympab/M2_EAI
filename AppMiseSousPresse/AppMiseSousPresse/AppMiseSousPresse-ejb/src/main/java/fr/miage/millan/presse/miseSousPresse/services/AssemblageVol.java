@@ -6,7 +6,7 @@
 package fr.miage.millan.presse.miseSousPresse.services;
 
 import fr.miage.millan.presse.miseSousPresse.jms.SenderNotification;
-import fr.miage.millan.presse.miseSousPresse.metier.SimulationStockage;
+import fr.miage.millan.presse.miseSousPresse.bd.SimulationStockage;
 import fr.miage.millan.presse.sharedpubpresse.objects.Publicite;
 import fr.miage.millan.presse.sharedredactionpresse.objects.Article;
 import fr.miage.millan.presse.sharedvolume.objects.Titre;

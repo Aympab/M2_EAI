@@ -46,5 +46,7 @@ public interface ServicePresseLocal {
     
     public ArrayList<Titre> selectionnerTitrePourEnvoi(int idTitre);
     
+    public String diffuserTitres();
+    
     //public void transfererVolumeVersDistrib(Volume v);
 }

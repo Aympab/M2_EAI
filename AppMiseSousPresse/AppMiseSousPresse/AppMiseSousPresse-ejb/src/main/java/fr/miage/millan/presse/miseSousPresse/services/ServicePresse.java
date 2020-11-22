@@ -7,7 +7,8 @@ package fr.miage.millan.presse.miseSousPresse.services;
 
 import fr.miage.millan.presse.miseSousPresse.jms.SenderArchiveTitre;
 import fr.miage.millan.presse.miseSousPresse.jms.SenderDistributionVolume;
-import fr.miage.millan.presse.miseSousPresse.metier.SimulationStockage;
+import fr.miage.millan.presse.miseSousPresse.bd.SimulationStockage;
+import fr.miage.millan.presse.miseSousPresse.jms.DiffuseurTitres;
 import fr.miage.millan.presse.miseSousPresse.jms.SenderNotification;
 import fr.miage.millan.presse.sharedpubpresse.objects.Publicite;
 import fr.miage.millan.presse.sharedredactionpresse.objects.Article;
@@ -154,12 +155,27 @@ public class ServicePresse implements ServicePresseLocal {
     @Override
     public ArrayList<Titre> selectionnerTitrePourEnvoi(int idTitre) {
         for (Titre t : SimulationStockage.getStockTitre()) {
-            if(t.getId() == idTitre){
+            if (t.getId() == idTitre) {
                 titresAEnvoyer.add(t);
                 break;
             }
         }
         return titresAEnvoyer;
+    }
+
+    @Override
+    public String diffuserTitres() {
+        try {
+            DiffuseurTitres diffuseur = new DiffuseurTitres();
+            diffuseur.sendJMSMessageToDIFFUSION_TITRES(titresAEnvoyer);
+            return "OK";
+        } catch (JMSException ex) {
+            Logger.getLogger(ServicePresse.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(ServicePresse.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return "ERROR";
     }
 
 }

@@ -20,9 +20,9 @@ import javax.jws.WebParam;
  *
  * @author aympa
  */
-@WebService(serviceName = "PresseRemote")
+@WebService(serviceName = "ServicePresseRemote")
 @Stateless()
-public class PresseRemote {
+public class ServicePresseRemote {
 
     @EJB
     private ServicePresseLocal ejbRef;// Add business logic below. (Right-click in editor and choose
@@ -71,6 +71,11 @@ public class PresseRemote {
     @WebMethod(operationName = "selectionnerTitrePourEnvoi")
     public ArrayList<Titre> selectionnerTitrePourEnvoi(@WebParam(name = "idTitre") int idTitre) {
         return ejbRef.selectionnerTitrePourEnvoi(idTitre);
+    }
+
+    @WebMethod(operationName = "diffuserTitres")
+    public String diffuserTitres() {
+        return ejbRef.diffuserTitres();
     }
     
 }
