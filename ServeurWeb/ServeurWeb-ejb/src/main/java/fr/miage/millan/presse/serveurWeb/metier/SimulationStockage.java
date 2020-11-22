@@ -19,10 +19,27 @@ import java.util.Arrays;
 public final class SimulationStockage {
     
     private static final ArrayList<Titre> titresEnStock = new ArrayList<Titre>();
-    
     private static int idTitre = 0;
     
-    public static void ajouterTitre() {
+    public static void ajouterTitreEnStock(Titre t){
+        t.setId(idTitre);
+        titresEnStock.add(t);
+        idTitre += 1;
+    }
+    
+    public static void receptionnerTitres(ArrayList<Titre> titres){
+        for(Titre t : titres){
+            ajouterTitreEnStock(t);
+            System.out.println("SERVEURWEB - un titre ajouté");
+        }
+    }
+    
+    public static ArrayList<Titre> getStockTitre() {
+        return titresEnStock;
+    }
+    
+    
+    public static void genererTitres() {
         Titre t = new Titre();
         t.setNom("Titre1");
         t.setId(idTitre);
@@ -87,11 +104,6 @@ public final class SimulationStockage {
         idTitre += 1;
         titresEnStock.add(t2);
         t2.setListeVolumes(new ArrayList<Volume>());
-    }
-    
-    public static ArrayList<Titre> getStockTitre() {
-        ajouterTitre();
-        return titresEnStock;
     }
     
 }

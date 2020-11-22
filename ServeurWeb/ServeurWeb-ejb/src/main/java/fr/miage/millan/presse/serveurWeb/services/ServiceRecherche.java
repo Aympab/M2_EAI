@@ -10,7 +10,6 @@ import fr.miage.millan.presse.sharedredactionpresse.objects.Article;
 import fr.miage.millan.presse.sharedvolume.objects.Titre;
 import fr.miage.millan.presse.sharedvolume.objects.Volume;
 import java.util.ArrayList;
-import java.util.List;
 import javax.ejb.Stateless;
 
 /**
