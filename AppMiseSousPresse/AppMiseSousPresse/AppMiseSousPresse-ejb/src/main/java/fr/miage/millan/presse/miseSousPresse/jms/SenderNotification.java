@@ -27,7 +27,6 @@ import javax.naming.NamingException;
 public class SenderNotification {
 
     public Message createJMSMessageForPRESSE_NOTIF_REDAC(Session session, Object messageData) throws JMSException {
-        // TODO create and populate message to send
         ObjectMessage om = session.createObjectMessage();
         om.setObject((String)messageData);
         return om;

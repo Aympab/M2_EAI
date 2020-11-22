@@ -5,6 +5,7 @@
  */
 package fr.miage.millan.presse.miseSousPresse.services;
 
+import fr.miage.millan.presse.miseSousPresse.jms.SenderNotification;
 import fr.miage.millan.presse.miseSousPresse.metier.SimulationStockage;
 import fr.miage.millan.presse.sharedpubpresse.objects.Publicite;
 import fr.miage.millan.presse.sharedredactionpresse.objects.Article;
@@ -19,6 +20,8 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class AssemblageVol implements AssemblageVolLocal {
+
+    static SenderNotification senderNotif = new SenderNotification();
 
     @Override
     public Volume assemblerVolumeSimple(int numeroVolume) throws Exception {
@@ -38,8 +41,11 @@ public class AssemblageVol implements AssemblageVolLocal {
         }
 
         volume.setNumero(numeroVolume);
-        
+
         sauvegarderVolume(volume);
+
+        //On envoie la notification à l'app redaction
+        senderNotif.sendJMSMessageToPRESSE_NOTIF_REDAC("NOUVEAU VOLUME ASSEMBLE");
         return volume;
     }
 
@@ -48,14 +54,14 @@ public class AssemblageVol implements AssemblageVolLocal {
     }
 
     @Override
-    public Volume assemblerVolumeComplexe(int numeroVolume, ArrayList<Integer> listeIdsArticles, ArrayList<Integer> listeIdsPubs)  throws Exception {
-        Volume volume = new Volume(); 
+    public Volume assemblerVolumeComplexe(int numeroVolume, ArrayList<Integer> listeIdsArticles, ArrayList<Integer> listeIdsPubs) throws Exception {
+        Volume volume = new Volume();
         ArrayList<Article> listArticles = SimulationStockage.getStockArticleByListId(listeIdsArticles);
-        ArrayList<Publicite> listPubs= SimulationStockage.getStockPubByListIds(listeIdsPubs);
-        
+        ArrayList<Publicite> listPubs = SimulationStockage.getStockPubByListIds(listeIdsPubs);
+
         if (!listArticles.isEmpty()) {
             volume.setListeArticles(listArticles);
-        }  else {
+        } else {
             throw new Exception("APPPRESSE - ERREUR AssemblageVol - Pas d'articles en stock correspondant a ces identifiants pour assembler un volume");
         }
 
@@ -67,6 +73,9 @@ public class AssemblageVol implements AssemblageVolLocal {
 
         volume.setNumero(numeroVolume);
         sauvegarderVolume(volume);
+
+        //On envoie la notification à l'app redaction
+        senderNotif.sendJMSMessageToPRESSE_NOTIF_REDAC("NOUVEAU VOLUME ASSEMBLE");
         return volume;
     }
 
@@ -75,10 +84,10 @@ public class AssemblageVol implements AssemblageVolLocal {
         Titre titre = new Titre();
         titre.setNom(nomTitre);
         titre.setListeVolumes(SimulationStockage.getStockVolume());
-        
+
         SimulationStockage.ajouterTitre(titre);
-        
+
         return titre;
     }
-    
+
 }
