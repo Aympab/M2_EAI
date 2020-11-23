@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="SharedDistributeurs">
+  <ClassDiagramComponents>
+    <Class name="ContratDistributeur" package="fr.miage.millan.presse.shareddistributeurs.objs" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="idContrat" type="int" visibility="private"/>
+        <Field name="nbCopies" type="int" visibility="private"/>
+        <Field name="dureeContrat" type="int" visibility="private"/>
+        <Field name="contratValide" type="boolean" visibility="private"/>
+        <Field name="cout" type="float" visibility="private"/>
+        <Field name="nomDistrib" type="String" visibility="private"/>
+        <Field name="recepisseValide" type="boolean" visibility="private"/>
+        <Field name="titresDiffuses" type="ArrayList&lt;Titre&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getIdContrat" returnType="int" visibility="public"/>
+        <Method name="setIdContrat" returnType="void" visibility="public">
+          <Argument type="int" name="idContrat"/>
+        </Method>
+        <Method name="getNbCopies" returnType="int" visibility="public"/>
+        <Method name="setNbCopies" returnType="void" visibility="public">
+          <Argument type="int" name="nbCopies"/>
+        </Method>
+        <Method name="getDureeContrat" returnType="int" visibility="public"/>
+        <Method name="setDureeContrat" returnType="void" visibility="public">
+          <Argument type="int" name="dureeContrat"/>
+        </Method>
+        <Method name="isContratValide" returnType="boolean" visibility="public"/>
+        <Method name="setContratValide" returnType="void" visibility="public">
+          <Argument type="boolean" name="contratValide"/>
+        </Method>
+        <Method name="getCout" returnType="float" visibility="public"/>
+        <Method name="setCout" returnType="void" visibility="public">
+          <Argument type="float" name="cout"/>
+        </Method>
+        <Method name="getNomDistrib" returnType="String" visibility="public"/>
+        <Method name="setNomDistrib" returnType="void" visibility="public">
+          <Argument type="String" name="nomDistrib"/>
+        </Method>
+        <Method name="isRecepisseValide" returnType="boolean" visibility="public"/>
+        <Method name="setRecepisseValide" returnType="void" visibility="public">
+          <Argument type="boolean" name="recepisseValide"/>
+        </Method>
+        <Method name="getTitresDiffuses" returnType="ArrayList&lt;Titre&gt;" visibility="public"/>
+        <Method name="setTitresDiffuses" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Titre&gt;" name="titresDiffuses"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

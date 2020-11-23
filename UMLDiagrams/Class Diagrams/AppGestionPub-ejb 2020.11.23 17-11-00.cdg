@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="AppGestionPub-ejb">
+  <ClassDiagramComponents>
+    <Class name="SenderPublicite" package="fr.miage.millan.presse.appPub.jms" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="createJMSMessageForPUBINIT" returnType="Message" visibility="private">
+          <Argument type="Session" name="session"/>
+          <Argument type="Object" name="messageData"/>
+        </Method>
+        <Method name="sendJMSMessageToPUBINIT" returnType="void" visibility="public">
+          <Argument type="Object" name="messageData"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ServicePublicite" package="fr.miage.millan.presse.appPub.services" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="sender" type="SenderPublicite" visibility="package"/>
+        <Field name="pubsAEnvoyer" type="ArrayList&lt;Publicite&gt;" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="creerPublicitePourEnvoi" returnType="void" visibility="public">
+          <Argument type="String" name="nomPub"/>
+          <Argument type="String" name="contenu"/>
+        </Method>
+        <Method name="envoyerPublicites" returnType="void" visibility="public"/>
+        <Method name="getListeEnvoi" returnType="ArrayList&lt;Publicite&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Interface name="ServicePubliciteLocal" package="fr.miage.millan.presse.appPub.services" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Methods>
+        <Method name="creerPublicitePourEnvoi" returnType="void" visibility="public">
+          <Argument type="String" name="nomPub"/>
+          <Argument type="String" name="contenu"/>
+        </Method>
+        <Method name="envoyerPublicites" returnType="void" visibility="public"/>
+        <Method name="getListeEnvoi" returnType="ArrayList&lt;Publicite&gt;" visibility="public"/>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="fr.miage.millan.presse.appPub.services.ServicePublicite" target="fr.miage.millan.presse.appPub.services.ServicePubliciteLocal"/>
+    <HasRelation name="sender" source="fr.miage.millan.presse.appPub.services.ServicePublicite" target="fr.miage.millan.presse.appPub.jms.SenderPublicite" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

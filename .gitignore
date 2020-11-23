@@ -16,3 +16,8 @@
 /ServeurWeb/ServeurWeb-ejb/target/
 /ServeurWeb/ServeurWeb-web/target/
 /ServeurWeb/ServeurWeb-ear/target/
+/SharedDistributeurs/target/
+/AppDistributeur/AppDistributeur-ejb/target/
+/AppDistributeur/AppDistributeur-web/target/
+/AppDistributeur/AppDistributeur-ear/target/
+/JavaApplication1/nbproject/private/

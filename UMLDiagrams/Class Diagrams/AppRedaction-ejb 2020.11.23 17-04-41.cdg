@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="AppRedaction-ejb">
+  <ClassDiagramComponents>
+    <Class name="RecepteurNotification" package="fr.miage.millan.presse.redac.jms" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="metier" type="ServiceRedaction" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="onMessage" returnType="void" visibility="public">
+          <Argument type="Message" name="message"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SenderArticles" package="fr.miage.millan.presse.redac.jms" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="createJMSMessageForARTICLE_INIT" returnType="Message" visibility="private">
+          <Argument type="Session" name="session"/>
+          <Argument type="Object" name="messageData"/>
+        </Method>
+        <Method name="sendJMSMessageToARTICLE_INIT" returnType="void" visibility="public">
+          <Argument type="Object" name="messageData"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ServiceRedaction" package="fr.miage.millan.presse.redac.services" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="CONNECTION_FACTORY_M2_EAI" type="ConnectionFactory" visibility="private"/>
+        <Field name="sender" type="SenderArticles" visibility="package"/>
+        <Field name="idCreation" type="int" visibility="private" isStatic="true"/>
+        <Field name="articlesAEnvoyer" type="ArrayList&lt;Article&gt;" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="bdArticle" type="ArrayList&lt;Article&gt;" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="creerArticle" returnType="void" visibility="public">
+          <Argument type="String" name="nomArticle"/>
+          <Argument type="ArrayList&lt;String&gt;" name="motClefs"/>
+          <Argument type="String" name="contenu"/>
+          <Argument type="String" name="auteur"/>
+        </Method>
+        <Method name="selectionnerArticle" returnType="ArrayList&lt;Article&gt;" visibility="public">
+          <Argument type="Long" name="idArticleSelectionne"/>
+        </Method>
+        <Method name="envoyerListeArticles" returnType="void" visibility="public"/>
+        <Method name="getAllArticles" returnType="ArrayList&lt;Article&gt;" visibility="public"/>
+        <Method name="traiterNotification" returnType="void" visibility="public">
+          <Argument type="String" name="notif"/>
+        </Method>
+        <Method name="genererDonnees" returnType="void" visibility="private"/>
+      </Methods>
+    </Class>
+    <Interface name="ServiceRedactionLocal" package="fr.miage.millan.presse.redac.services" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Methods>
+        <Method name="creerArticle" returnType="void" visibility="public">
+          <Argument type="String" name="nomArticle"/>
+          <Argument type="ArrayList&lt;String&gt;" name="motClefs"/>
+          <Argument type="String" name="contenu"/>
+          <Argument type="String" name="auteur"/>
+        </Method>
+        <Method name="envoyerListeArticles" returnType="void" visibility="public"/>
+        <Method name="selectionnerArticle" returnType="ArrayList&lt;Article&gt;" visibility="public">
+          <Argument type="Long" name="idArticleSelectionne"/>
+        </Method>
+        <Method name="getAllArticles" returnType="ArrayList&lt;Article&gt;" visibility="public"/>
+        <Method name="traiterNotification" returnType="void" visibility="public">
+          <Argument type="String" name="notif"/>
+        </Method>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="fr.miage.millan.presse.redac.services.ServiceRedaction" target="fr.miage.millan.presse.redac.services.ServiceRedactionLocal"/>
+    <HasRelation name="sender" source="fr.miage.millan.presse.redac.services.ServiceRedaction" target="fr.miage.millan.presse.redac.jms.SenderArticles" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="metier" source="fr.miage.millan.presse.redac.jms.RecepteurNotification" target="fr.miage.millan.presse.redac.services.ServiceRedaction" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

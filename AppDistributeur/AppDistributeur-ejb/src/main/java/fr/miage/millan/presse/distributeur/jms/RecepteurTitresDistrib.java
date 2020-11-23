@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.miage.millan.presse.distribution.jms;
+package fr.miage.millan.presse.distributeur.jms;
 
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
@@ -14,25 +14,23 @@ import javax.jms.MessageListener;
  *
  * @author aympa
  */
-@MessageDriven(mappedName = "DIFFUSION_TITRES", activationConfig = {
-//    @ActivationConfigProperty(propertyName = "clientId", propertyValue = "DIFFUSION_TITRES")
-//    ,
+@MessageDriven(mappedName = "DIFFUSION_DISTRIB", activationConfig = {
+    @ActivationConfigProperty(propertyName = "clientId", propertyValue = "DIFFUSION_DISTRIB")
+    ,
         @ActivationConfigProperty(propertyName = "subscriptionDurability", propertyValue = "Durable")
     ,
-        @ActivationConfigProperty(propertyName = "subscriptionName", propertyValue = "DIFFUSION_TITRES")
+        @ActivationConfigProperty(propertyName = "subscriptionName", propertyValue = "DIFFUSION_DISTRIB")
     ,
         @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic")
 })
-public class RecepteurTitres implements MessageListener {
+public class RecepteurTitresDistrib implements MessageListener {
     
-    
-    public RecepteurTitres() {
-        
+    public RecepteurTitresDistrib() {
     }
     
     @Override
     public void onMessage(Message message) {
-        System.out.println("App diffusion : Diffusion topic recue");
+        System.out.println("DISTRIBUTEUR - Titres reçus");
     }
     
 }

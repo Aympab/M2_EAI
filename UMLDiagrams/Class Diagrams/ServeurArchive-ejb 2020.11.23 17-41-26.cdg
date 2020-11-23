@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="ServeurArchive-ejb">
+  <ClassDiagramComponents>
+    <Class name="GestionEntity" package="fr.miage.millan.presse.archive.business" visibility="public" isFinal="true" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="genererTitreBD" returnType="TitreBD" visibility="public" isStatic="true">
+          <Argument type="Titre" name="titre"/>
+        </Method>
+        <Method name="genererPubBD" returnType="PubliciteBD" visibility="public" isStatic="true">
+          <Argument type="Publicite" name="pub"/>
+        </Method>
+        <Method name="genererArticleBD" returnType="ArticleBD" visibility="public" isStatic="true">
+          <Argument type="Article" name="art"/>
+        </Method>
+        <Method name="genererVolumeBD" returnType="VolumeBD" visibility="public" isStatic="true">
+          <Argument type="Volume" name="v"/>
+        </Method>
+        <Method name="genererTitres" returnType="ArrayList&lt;Titre&gt;" visibility="public" isStatic="true">
+          <Argument type="ArrayList&lt;TitreBD&gt;" name="titresBD"/>
+        </Method>
+        <Method name="genererTitre" returnType="Titre" visibility="public" isStatic="true">
+          <Argument type="TitreBD" name="tbd"/>
+        </Method>
+        <Method name="genererVolume" returnType="Volume" visibility="private" isStatic="true">
+          <Argument type="VolumeBD" name="vbd"/>
+        </Method>
+        <Method name="genererArticle" returnType="Article" visibility="private" isStatic="true">
+          <Argument type="ArticleBD" name="abd"/>
+        </Method>
+        <Method name="genererPub" returnType="Publicite" visibility="private" isStatic="true">
+          <Argument type="PubliciteBD" name="pbd"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ServiceArchivage" package="fr.miage.millan.presse.archive.business" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="titreBDFacade" type="TitreBDFacadeLocal" visibility="private"/>
+        <Field name="volumeFacade" type="VolumeBDFacadeLocal" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="sauvegarderVolume" returnType="VolumeBD" visibility="public">
+          <Argument type="Volume" name="v"/>
+        </Method>
+        <Method name="traiterReceptionVolumes" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Volume&gt;" name="volumes"/>
+        </Method>
+        <Method name="traiterReceptionTitres" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Titre&gt;" name="titres"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="ServiceArchivageLocal" package="fr.miage.millan.presse.archive.business" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Methods>
+        <Method name="traiterReceptionVolumes" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Volume&gt;" name="volumes"/>
+        </Method>
+        <Method name="traiterReceptionTitres" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Titre&gt;" name="titres"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Class name="ServiceDiffusion" package="fr.miage.millan.presse.archive.business" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="titreBDFacade" type="TitreBDFacadeLocal" visibility="private"/>
+        <Field name="sender" type="SenderTitres" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="diffuserTitresVersServeurRecherche" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Interface name="ServiceDiffusionLocal" package="fr.miage.millan.presse.archive.business" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Methods>
+        <Method name="diffuserTitresVersServeurRecherche" returnType="String" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Class name="ArticleBD" package="fr.miage.millan.presse.archive.entities" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields>
+        <Field name="nom" type="String" visibility="private"/>
+        <Field name="motsClefs" type="ArrayList&lt;String&gt;" visibility="private"/>
+        <Field name="contenu" type="String" visibility="private"/>
+        <Field name="auteur" type="String" visibility="private"/>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Long" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getId" returnType="Long" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getNom" returnType="String" visibility="public"/>
+        <Method name="setNom" returnType="void" visibility="public">
+          <Argument type="String" name="nom"/>
+        </Method>
+        <Method name="getMotsClefs" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="setMotsClefs" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;String&gt;" name="motsClefs"/>
+        </Method>
+        <Method name="getContenu" returnType="String" visibility="public"/>
+        <Method name="setContenu" returnType="void" visibility="public">
+          <Argument type="String" name="contenu"/>
+        </Method>
+        <Method name="getAuteur" returnType="String" visibility="public"/>
+        <Method name="setAuteur" returnType="void" visibility="public">
+          <Argument type="String" name="auteur"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PubliciteBD" package="fr.miage.millan.presse.archive.entities" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Integer" visibility="private"/>
+        <Field name="nom" type="String" visibility="private"/>
+        <Field name="contenu" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getIdpublicite" returnType="Integer" visibility="public"/>
+        <Method name="setIdpublicite" returnType="void" visibility="public">
+          <Argument type="Integer" name="idpublicite"/>
+        </Method>
+        <Method name="getNom" returnType="String" visibility="public"/>
+        <Method name="setNom" returnType="void" visibility="public">
+          <Argument type="String" name="nom"/>
+        </Method>
+        <Method name="getContenu" returnType="String" visibility="public"/>
+        <Method name="setContenu" returnType="void" visibility="public">
+          <Argument type="String" name="contenu"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="TitreBD" package="fr.miage.millan.presse.archive.entities" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields>
+        <Field name="nom" type="String" visibility="private"/>
+        <Field name="listeVolumes" type="ArrayList&lt;VolumeBD&gt;" visibility="private"/>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Long" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getId" returnType="Long" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getNom" returnType="String" visibility="public"/>
+        <Method name="setNom" returnType="void" visibility="public">
+          <Argument type="String" name="nom"/>
+        </Method>
+        <Method name="getListeVolumes" returnType="ArrayList&lt;VolumeBD&gt;" visibility="public"/>
+        <Method name="setListeVolumes" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;VolumeBD&gt;" name="listeVolumes"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="VolumeBD" package="fr.miage.millan.presse.archive.entities" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Fields>
+        <Field name="numero" type="int" visibility="private"/>
+        <Field name="listeArticles" type="ArrayList&lt;ArticleBD&gt;" visibility="private"/>
+        <Field name="listePublicites" type="ArrayList&lt;PubliciteBD&gt;" visibility="private"/>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Long" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getId" returnType="Long" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getNumero" returnType="int" visibility="public"/>
+        <Method name="setNumero" returnType="void" visibility="public">
+          <Argument type="int" name="numero"/>
+        </Method>
+        <Method name="getListeArticles" returnType="ArrayList&lt;ArticleBD&gt;" visibility="public"/>
+        <Method name="setListeArticles" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;ArticleBD&gt;" name="listeArticles"/>
+        </Method>
+        <Method name="getListePublicites" returnType="ArrayList&lt;PubliciteBD&gt;" visibility="public"/>
+        <Method name="setListePublicites" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;PubliciteBD&gt;" name="listePublicites"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="AbstractFacade" package="fr.miage.millan.presse.archive.facades" visibility="public" isAbstract="true" xPosition="320.0" yPosition="420.0">
+      <Fields>
+        <Field name="entityClass" type="Class&lt;T&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Class&lt;T&gt;" name="entityClass"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getEntityManager" returnType="EntityManager" visibility="protected" isAbstract="true"/>
+        <Method name="create" returnType="void" visibility="public">
+          <Argument type="T" name="entity"/>
+        </Method>
+        <Method name="edit" returnType="void" visibility="public">
+          <Argument type="T" name="entity"/>
+        </Method>
+        <Method name="remove" returnType="void" visibility="public">
+          <Argument type="T" name="entity"/>
+        </Method>
+        <Method name="find" returnType="T" visibility="public">
+          <Argument type="Object" name="id"/>
+        </Method>
+        <Method name="findAll" returnType="List&lt;T&gt;" visibility="public"/>
+        <Method name="findRange" returnType="List&lt;T&gt;" visibility="public">
+          <Argument type="int[]" name="range"/>
+        </Method>
+        <Method name="count" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ArticleBDFacade" package="fr.miage.millan.presse.archive.facades" visibility="public" xPosition="620.0" yPosition="420.0">
+      <Fields>
+        <Field name="em" type="EntityManager" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getEntityManager" returnType="EntityManager" visibility="protected"/>
+      </Methods>
+    </Class>
+    <Interface name="ArticleBDFacadeLocal" package="fr.miage.millan.presse.archive.facades" visibility="public" xPosition="920.0" yPosition="420.0">
+      <Methods>
+        <Method name="create" returnType="void" visibility="package">
+          <Argument type="ArticleBD" name="articleBD"/>
+        </Method>
+        <Method name="edit" returnType="void" visibility="package">
+          <Argument type="ArticleBD" name="articleBD"/>
+        </Method>
+        <Method name="remove" returnType="void" visibility="package">
+          <Argument type="ArticleBD" name="articleBD"/>
+        </Method>
+        <Method name="find" returnType="ArticleBD" visibility="package">
+          <Argument type="Object" name="id"/>
+        </Method>
+        <Method name="findAll" returnType="List&lt;ArticleBD&gt;" visibility="package"/>
+        <Method name="findRange" returnType="List&lt;ArticleBD&gt;" visibility="package">
+          <Argument type="int[]" name="range"/>
+        </Method>
+        <Method name="count" returnType="int" visibility="package"/>
+      </Methods>
+    </Interface>
+    <Class name="PubliciteBDFacade" package="fr.miage.millan.presse.archive.facades" visibility="public" xPosition="1220.0" yPosition="420.0">
+      <Fields>
+        <Field name="em" type="EntityManager" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getEntityManager" returnType="EntityManager" visibility="protected"/>
+      </Methods>
+    </Class>
+    <Interface name="PubliciteBDFacadeLocal" package="fr.miage.millan.presse.archive.facades" visibility="public" xPosition="1520.0" yPosition="420.0">
+      <Methods>
+        <Method name="create" returnType="void" visibility="package">
+          <Argument type="PubliciteBD" name="publiciteBD"/>
+        </Method>
+        <Method name="edit" returnType="void" visibility="package">
+          <Argument type="PubliciteBD" name="publiciteBD"/>
+        </Method>
+        <Method name="remove" returnType="void" visibility="package">
+          <Argument type="PubliciteBD" name="publiciteBD"/>
+        </Method>
+        <Method name="find" returnType="PubliciteBD" visibility="package">
+          <Argument type="Object" name="id"/>
+        </Method>
+        <Method name="findAll" returnType="List&lt;PubliciteBD&gt;" visibility="package"/>
+        <Method name="findRange" returnType="List&lt;PubliciteBD&gt;" visibility="package">
+          <Argument type="int[]" name="range"/>
+        </Method>
+        <Method name="count" returnType="int" visibility="package"/>
+      </Methods>
+    </Interface>
+    <Class name="TitreBDFacade" package="fr.miage.millan.presse.archive.facades" visibility="public" xPosition="1820.0" yPosition="420.0">
+      <Fields>
+        <Field name="em" type="EntityManager" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getEntityManager" returnType="EntityManager" visibility="protected"/>
+      </Methods>
+    </Class>
+    <Interface name="TitreBDFacadeLocal" package="fr.miage.millan.presse.archive.facades" visibility="public" xPosition="2120.0" yPosition="420.0">
+      <Methods>
+        <Method name="create" returnType="void" visibility="package">
+          <Argument type="TitreBD" name="titreBD"/>
+        </Method>
+        <Method name="edit" returnType="void" visibility="package">
+          <Argument type="TitreBD" name="titreBD"/>
+        </Method>
+        <Method name="remove" returnType="void" visibility="package">
+          <Argument type="TitreBD" name="titreBD"/>
+        </Method>
+        <Method name="find" returnType="TitreBD" visibility="package">
+          <Argument type="Object" name="id"/>
+        </Method>
+        <Method name="findAll" returnType="List&lt;TitreBD&gt;" visibility="package"/>
+        <Method name="findRange" returnType="List&lt;TitreBD&gt;" visibility="package">
+          <Argument type="int[]" name="range"/>
+        </Method>
+        <Method name="count" returnType="int" visibility="package"/>
+      </Methods>
+    </Interface>
+    <Class name="VolumeBDFacade" package="fr.miage.millan.presse.archive.facades" visibility="public" xPosition="20.0" yPosition="820.0">
+      <Fields>
+        <Field name="em" type="EntityManager" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getEntityManager" returnType="EntityManager" visibility="protected"/>
+      </Methods>
+    </Class>
+    <Interface name="VolumeBDFacadeLocal" package="fr.miage.millan.presse.archive.facades" visibility="public" xPosition="320.0" yPosition="820.0">
+      <Methods>
+        <Method name="create" returnType="void" visibility="package">
+          <Argument type="VolumeBD" name="volumeBD"/>
+        </Method>
+        <Method name="edit" returnType="void" visibility="package">
+          <Argument type="VolumeBD" name="volumeBD"/>
+        </Method>
+        <Method name="remove" returnType="void" visibility="package">
+          <Argument type="VolumeBD" name="volumeBD"/>
+        </Method>
+        <Method name="find" returnType="VolumeBD" visibility="package">
+          <Argument type="Object" name="id"/>
+        </Method>
+        <Method name="findAll" returnType="List&lt;VolumeBD&gt;" visibility="package"/>
+        <Method name="findRange" returnType="List&lt;VolumeBD&gt;" visibility="package">
+          <Argument type="int[]" name="range"/>
+        </Method>
+        <Method name="count" returnType="int" visibility="package"/>
+      </Methods>
+    </Interface>
+    <Class name="RecepteurTitresDiffuses" package="fr.miage.millan.presse.archive.jms" visibility="public" xPosition="620.0" yPosition="820.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="onMessage" returnType="void" visibility="public">
+          <Argument type="Message" name="message"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="RecepteurVolume" package="fr.miage.millan.presse.archive.jms" visibility="public" xPosition="920.0" yPosition="820.0">
+      <Fields>
+        <Field name="serviceArchivage" type="ServiceArchivageLocal" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="onMessage" returnType="void" visibility="public">
+          <Argument type="Message" name="message"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SenderTitres" package="fr.miage.millan.presse.archive.jms" visibility="public" xPosition="1220.0" yPosition="820.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="createJMSMessageForARCHIVE_TRANSFERT_SRVWEB" returnType="Message" visibility="private">
+          <Argument type="Session" name="session"/>
+          <Argument type="Object" name="messageData"/>
+        </Method>
+        <Method name="sendJMSMessageToARCHIVE_TRANSFERT_SRVWEB" returnType="void" visibility="public">
+          <Argument type="Object" name="messageData"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="fr.miage.millan.presse.archive.business.GestionEntity" target="fr.miage.millan.presse.archive.entities.ArticleBD" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="fr.miage.millan.presse.archive.business.ServiceDiffusion" target="fr.miage.millan.presse.archive.business.ServiceDiffusionLocal"/>
+    <UseRelation source="fr.miage.millan.presse.archive.business.GestionEntity" target="fr.miage.millan.presse.archive.entities.VolumeBD" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="listePublicites" source="fr.miage.millan.presse.archive.entities.VolumeBD" target="fr.miage.millan.presse.archive.entities.PubliciteBD" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;PubliciteBD&gt;"/>
+    <HasRelation name="serviceArchivage" source="fr.miage.millan.presse.archive.jms.RecepteurVolume" target="fr.miage.millan.presse.archive.business.ServiceArchivageLocal" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="titreBDFacade" source="fr.miage.millan.presse.archive.business.ServiceArchivage" target="fr.miage.millan.presse.archive.facades.TitreBDFacadeLocal" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="fr.miage.millan.presse.archive.facades.TitreBDFacade" target="fr.miage.millan.presse.archive.facades.AbstractFacade"/>
+    <UseRelation source="fr.miage.millan.presse.archive.facades.VolumeBDFacadeLocal" target="fr.miage.millan.presse.archive.entities.VolumeBD" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="titreBDFacade" source="fr.miage.millan.presse.archive.business.ServiceDiffusion" target="fr.miage.millan.presse.archive.facades.TitreBDFacadeLocal" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="listeArticles" source="fr.miage.millan.presse.archive.entities.VolumeBD" target="fr.miage.millan.presse.archive.entities.ArticleBD" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;ArticleBD&gt;"/>
+    <UseRelation source="fr.miage.millan.presse.archive.facades.PubliciteBDFacadeLocal" target="fr.miage.millan.presse.archive.entities.PubliciteBD" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="fr.miage.millan.presse.archive.entities.TitreBD" target="fr.miage.millan.presse.archive.entities.VolumeBD" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="fr.miage.millan.presse.archive.facades.ArticleBDFacadeLocal" target="fr.miage.millan.presse.archive.entities.ArticleBD" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="fr.miage.millan.presse.archive.business.GestionEntity" target="fr.miage.millan.presse.archive.entities.PubliciteBD" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="fr.miage.millan.presse.archive.facades.TitreBDFacade" target="fr.miage.millan.presse.archive.facades.TitreBDFacadeLocal"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="fr.miage.millan.presse.archive.business.ServiceArchivage" target="fr.miage.millan.presse.archive.business.ServiceArchivageLocal"/>
+    <IsRelation name="is" source="fr.miage.millan.presse.archive.facades.PubliciteBDFacade" target="fr.miage.millan.presse.archive.facades.AbstractFacade"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="fr.miage.millan.presse.archive.facades.VolumeBDFacade" target="fr.miage.millan.presse.archive.facades.VolumeBDFacadeLocal"/>
+    <HasRelation name="volumeFacade" source="fr.miage.millan.presse.archive.business.ServiceArchivage" target="fr.miage.millan.presse.archive.facades.VolumeBDFacadeLocal" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sender" source="fr.miage.millan.presse.archive.business.ServiceDiffusion" target="fr.miage.millan.presse.archive.jms.SenderTitres" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="fr.miage.millan.presse.archive.facades.VolumeBDFacade" target="fr.miage.millan.presse.archive.facades.AbstractFacade"/>
+    <UseRelation source="fr.miage.millan.presse.archive.business.ServiceArchivage" target="fr.miage.millan.presse.archive.entities.VolumeBD" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="fr.miage.millan.presse.archive.business.GestionEntity" target="fr.miage.millan.presse.archive.entities.TitreBD" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="fr.miage.millan.presse.archive.entities.VolumeBD" target="fr.miage.millan.presse.archive.entities.ArticleBD" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="fr.miage.millan.presse.archive.facades.TitreBDFacadeLocal" target="fr.miage.millan.presse.archive.entities.TitreBD" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="fr.miage.millan.presse.archive.entities.VolumeBD" target="fr.miage.millan.presse.archive.entities.PubliciteBD" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="fr.miage.millan.presse.archive.facades.ArticleBDFacade" target="fr.miage.millan.presse.archive.facades.AbstractFacade"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="fr.miage.millan.presse.archive.facades.PubliciteBDFacade" target="fr.miage.millan.presse.archive.facades.PubliciteBDFacadeLocal"/>
+    <HasRelation name="listeVolumes" source="fr.miage.millan.presse.archive.entities.TitreBD" target="fr.miage.millan.presse.archive.entities.VolumeBD" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;VolumeBD&gt;"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="fr.miage.millan.presse.archive.facades.ArticleBDFacade" target="fr.miage.millan.presse.archive.facades.ArticleBDFacadeLocal"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

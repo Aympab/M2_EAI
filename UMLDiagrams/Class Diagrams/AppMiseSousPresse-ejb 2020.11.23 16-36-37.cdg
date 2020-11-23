@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="AppMiseSousPresse-ejb">
+  <ClassDiagramComponents>
+    <Class name="SimulationStockage" package="fr.miage.millan.presse.miseSousPresse.bd" visibility="public" isFinal="true" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="pubsEnStock" type="ArrayList&lt;Publicite&gt;" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="articlesEnStock" type="ArrayList&lt;Article&gt;" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="volumesEnStock" type="ArrayList&lt;Volume&gt;" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="titresEnStock" type="ArrayList&lt;Titre&gt;" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="idPub" type="int" visibility="private" isStatic="true"/>
+        <Field name="idArt" type="int" visibility="private" isStatic="true"/>
+        <Field name="idVol" type="int" visibility="private" isStatic="true"/>
+        <Field name="idTit" type="int" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="ajouterPub" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Publicite" name="p"/>
+        </Method>
+        <Method name="ajouterArticle" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Article" name="a"/>
+        </Method>
+        <Method name="ajouterVolume" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Volume" name="v"/>
+        </Method>
+        <Method name="ajouterTitre" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Titre" name="t"/>
+        </Method>
+        <Method name="getStockArticle" returnType="ArrayList&lt;Article&gt;" visibility="public" isStatic="true"/>
+        <Method name="getStockPub" returnType="ArrayList&lt;Publicite&gt;" visibility="public" isStatic="true"/>
+        <Method name="getStockVolume" returnType="ArrayList&lt;Volume&gt;" visibility="public" isStatic="true"/>
+        <Method name="getStockTitre" returnType="ArrayList&lt;Titre&gt;" visibility="public" isStatic="true"/>
+        <Method name="getStockArticleByListId" returnType="ArrayList&lt;Article&gt;" visibility="public" isStatic="true">
+          <Argument type="ArrayList&lt;Integer&gt;" name="listIdsArticles"/>
+        </Method>
+        <Method name="getStockPubByListIds" returnType="ArrayList&lt;Publicite&gt;" visibility="public" isStatic="true">
+          <Argument type="ArrayList&lt;Integer&gt;" name="listeIdsPubs"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="DiffuseurTitres" package="fr.miage.millan.presse.miseSousPresse.jms" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="createJMSMessageForDIFFUSION_TITRES" returnType="Message" visibility="private">
+          <Argument type="Session" name="session"/>
+          <Argument type="Object" name="messageData"/>
+        </Method>
+        <Method name="sendJMSMessageToDIFFUSION_TITRES" returnType="void" visibility="public">
+          <Argument type="Object" name="messageData"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="RecepteurArticle" package="fr.miage.millan.presse.miseSousPresse.jms" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="metier" type="ServicePresse" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="onMessage" returnType="void" visibility="public">
+          <Argument type="Message" name="message"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="RecepteurPub" package="fr.miage.millan.presse.miseSousPresse.jms" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="metier" type="ServicePresse" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="onMessage" returnType="void" visibility="public">
+          <Argument type="Message" name="message"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SenderArchiveTitre" package="fr.miage.millan.presse.miseSousPresse.jms" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="connectionFactory" type="ConnectionFactory" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="createJMSMessageForPRESSE_TRANSFERT_ARCHIVE" returnType="Message" visibility="private">
+          <Argument type="Session" name="session"/>
+          <Argument type="Object" name="messageData"/>
+        </Method>
+        <Method name="sendJMSMessageToPRESSE_TRANSFERT_ARCHIVE" returnType="void" visibility="public">
+          <Argument type="Object" name="messageData"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SenderDistributionVolume" package="fr.miage.millan.presse.miseSousPresse.jms" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="createJMSMessageForPRESSE_TRANSFERT_DISTRIB" returnType="Message" visibility="private">
+          <Argument type="Session" name="session"/>
+          <Argument type="Object" name="messageData"/>
+        </Method>
+        <Method name="sendJMSMessageToPRESSE_TRANSFERT_DISTRIB" returnType="void" visibility="public">
+          <Argument type="Object" name="messageData"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SenderNotification" package="fr.miage.millan.presse.miseSousPresse.jms" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="createJMSMessageForPRESSE_NOTIF_REDAC" returnType="Message" visibility="public">
+          <Argument type="Session" name="session"/>
+          <Argument type="Object" name="messageData"/>
+        </Method>
+        <Method name="sendJMSMessageToPRESSE_NOTIF_REDAC" returnType="void" visibility="public">
+          <Argument type="Object" name="messageData"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="AssemblageVol" package="fr.miage.millan.presse.miseSousPresse.services" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields>
+        <Field name="senderNotif" type="SenderNotification" visibility="package" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="assemblerVolumeSimple" returnType="Volume" visibility="public">
+          <Argument type="int" name="numeroVolume"/>
+        </Method>
+        <Method name="sauvegarderVolume" returnType="void" visibility="public">
+          <Argument type="Volume" name="v"/>
+        </Method>
+        <Method name="assemblerVolumeComplexe" returnType="Volume" visibility="public">
+          <Argument type="int" name="numeroVolume"/>
+          <Argument type="ArrayList&lt;Integer&gt;" name="listeIdsArticles"/>
+          <Argument type="ArrayList&lt;Integer&gt;" name="listeIdsPubs"/>
+        </Method>
+        <Method name="assemblerTitreSimple" returnType="Titre" visibility="public">
+          <Argument type="String" name="nomTitre"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="AssemblageVolLocal" package="fr.miage.millan.presse.miseSousPresse.services" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Methods>
+        <Method name="assemblerVolumeSimple" returnType="Volume" visibility="public">
+          <Argument type="int" name="numeroVolume"/>
+        </Method>
+        <Method name="assemblerTitreSimple" returnType="Titre" visibility="public">
+          <Argument type="String" name="nomTitre"/>
+        </Method>
+        <Method name="assemblerVolumeComplexe" returnType="Volume" visibility="public">
+          <Argument type="int" name="numeroVolume"/>
+          <Argument type="ArrayList&lt;Integer&gt;" name="listeIdsArticles"/>
+          <Argument type="ArrayList&lt;Integer&gt;" name="listeIdsPubs"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Class name="ServicePresse" package="fr.miage.millan.presse.miseSousPresse.services" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Fields>
+        <Field name="CONNECTION_FACTORY_M2_EAI" type="ConnectionFactory" visibility="private"/>
+        <Field name="volumesAEnvoyer" type="ArrayList&lt;Volume&gt;" visibility="private" isStatic="true"/>
+        <Field name="titresAEnvoyer" type="ArrayList&lt;Titre&gt;" visibility="private" isStatic="true"/>
+        <Field name="sender" type="SenderNotification" visibility="private" isFinal="true"/>
+        <Field name="senderArchive" type="SenderArchiveTitre" visibility="private" isFinal="true"/>
+        <Field name="senderDistrib" type="SenderDistributionVolume" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="notifierAppRedac" returnType="void" visibility="public"/>
+        <Method name="traiterArticles" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Article&gt;" name="listeArt"/>
+        </Method>
+        <Method name="recupererPub" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Publicite&gt;" name="listePub"/>
+        </Method>
+        <Method name="printAllStock" returnType="void" visibility="public"/>
+        <Method name="getVolumesAEnvoyer" returnType="ArrayList&lt;Volume&gt;" visibility="public"/>
+        <Method name="transfererVolumesArchive" returnType="void" visibility="public"/>
+        <Method name="transfererVolumesDistribution" returnType="void" visibility="public"/>
+        <Method name="selectionnerVolumePourEnvoi" returnType="ArrayList&lt;Volume&gt;" visibility="public">
+          <Argument type="int" name="idVolume"/>
+        </Method>
+        <Method name="transfererTitresArchive" returnType="void" visibility="public"/>
+        <Method name="selectionnerTitrePourEnvoi" returnType="ArrayList&lt;Titre&gt;" visibility="public">
+          <Argument type="int" name="idTitre"/>
+        </Method>
+        <Method name="diffuserTitres" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Interface name="ServicePresseLocal" package="fr.miage.millan.presse.miseSousPresse.services" visibility="public" xPosition="620.0" yPosition="420.0">
+      <Methods>
+        <Method name="notifierAppRedac" returnType="void" visibility="public"/>
+        <Method name="getVolumesAEnvoyer" returnType="ArrayList&lt;Volume&gt;" visibility="public"/>
+        <Method name="transfererVolumesArchive" returnType="void" visibility="public"/>
+        <Method name="transfererVolumesDistribution" returnType="void" visibility="public"/>
+        <Method name="selectionnerVolumePourEnvoi" returnType="ArrayList&lt;Volume&gt;" visibility="public">
+          <Argument type="int" name="idVolume"/>
+        </Method>
+        <Method name="printAllStock" returnType="void" visibility="public"/>
+        <Method name="transfererTitresArchive" returnType="void" visibility="public"/>
+        <Method name="selectionnerTitrePourEnvoi" returnType="ArrayList&lt;Titre&gt;" visibility="public">
+          <Argument type="int" name="idTitre"/>
+        </Method>
+        <Method name="diffuserTitres" returnType="String" visibility="public"/>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="senderNotif" source="fr.miage.millan.presse.miseSousPresse.services.AssemblageVol" target="fr.miage.millan.presse.miseSousPresse.jms.SenderNotification" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sender" source="fr.miage.millan.presse.miseSousPresse.services.ServicePresse" target="fr.miage.millan.presse.miseSousPresse.jms.SenderNotification" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="senderDistrib" source="fr.miage.millan.presse.miseSousPresse.services.ServicePresse" target="fr.miage.millan.presse.miseSousPresse.jms.SenderDistributionVolume" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="fr.miage.millan.presse.miseSousPresse.services.ServicePresse" target="fr.miage.millan.presse.miseSousPresse.services.ServicePresseLocal"/>
+    <HasRelation name="senderArchive" source="fr.miage.millan.presse.miseSousPresse.services.ServicePresse" target="fr.miage.millan.presse.miseSousPresse.jms.SenderArchiveTitre" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="metier" source="fr.miage.millan.presse.miseSousPresse.jms.RecepteurPub" target="fr.miage.millan.presse.miseSousPresse.services.ServicePresse" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="fr.miage.millan.presse.miseSousPresse.services.AssemblageVol" target="fr.miage.millan.presse.miseSousPresse.services.AssemblageVolLocal"/>
+    <HasRelation name="metier" source="fr.miage.millan.presse.miseSousPresse.jms.RecepteurArticle" target="fr.miage.millan.presse.miseSousPresse.services.ServicePresse" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

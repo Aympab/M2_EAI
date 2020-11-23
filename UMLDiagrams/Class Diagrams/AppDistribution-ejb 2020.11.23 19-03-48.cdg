@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="AppDistribution-ejb">
+  <ClassDiagramComponents>
+    <Class name="RecepteurContrat" package="fr.miage.millan.presse.distribution.jms" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="onMessage" returnType="void" visibility="public">
+          <Argument type="Message" name="message"/>
+        </Method>
+        <Method name="genererTitres" returnType="ArrayList&lt;Titre&gt;" visibility="private"/>
+      </Methods>
+    </Class>
+    <Class name="RecepteurTitres" package="fr.miage.millan.presse.distribution.jms" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="onMessage" returnType="void" visibility="public">
+          <Argument type="Message" name="message"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SenderTitre" package="fr.miage.millan.presse.distribution.jms" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="createJMSMessageForDIFFUSION_DISTRIB" returnType="Message" visibility="private">
+          <Argument type="Session" name="session"/>
+          <Argument type="Object" name="messageData"/>
+        </Method>
+        <Method name="sendJMSMessageToDIFFUSION_DISTRIB" returnType="void" visibility="public">
+          <Argument type="Object" name="messageData"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ServiceDistribution" package="fr.miage.millan.presse.distribution.metier" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Interface name="ServiceDistributionLocal" package="fr.miage.millan.presse.distribution.metier" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Methods/>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="fr.miage.millan.presse.distribution.metier.ServiceDistribution" target="fr.miage.millan.presse.distribution.metier.ServiceDistributionLocal"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

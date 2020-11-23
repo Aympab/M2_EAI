@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="ServeurWeb-ejb">
+  <ClassDiagramComponents>
+    <Class name="RecepteurTitres" package="fr.miage.millan.presse.serveurWeb.jms" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="onMessage" returnType="void" visibility="public">
+          <Argument type="Message" name="message"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SimulationStockage" package="fr.miage.millan.presse.serveurWeb.metier" visibility="public" isFinal="true" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="titresEnStock" type="ArrayList&lt;Titre&gt;" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="idTitre" type="int" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="ajouterTitreEnStock" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Titre" name="t"/>
+        </Method>
+        <Method name="receptionnerTitres" returnType="void" visibility="public" isStatic="true">
+          <Argument type="ArrayList&lt;Titre&gt;" name="titres"/>
+        </Method>
+        <Method name="getStockTitre" returnType="ArrayList&lt;Titre&gt;" visibility="public" isStatic="true"/>
+        <Method name="genererTitres" returnType="void" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="NewSessionBean" package="fr.miage.millan.presse.serveurWeb" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="businessMethod" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ServiceRecherche" package="fr.miage.millan.presse.serveurWeb.services" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="listeTitres" type="ArrayList&lt;Titre&gt;" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getJsonTitre" returnType="ArrayList&lt;Titre&gt;" visibility="public"/>
+        <Method name="getJsonTitreMotsClefs" returnType="ArrayList&lt;Titre&gt;" visibility="public">
+          <Argument type="String" name="motClef"/>
+        </Method>
+        <Method name="getJsonVolume" returnType="Volume" visibility="public">
+          <Argument type="String" name="nomTitre"/>
+          <Argument type="int" name="numeroVolume"/>
+        </Method>
+        <Method name="getJsonTitreParNom" returnType="Titre" visibility="public">
+          <Argument type="String" name="nom"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="ServiceRechercheLocal" package="fr.miage.millan.presse.serveurWeb.services" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Methods>
+        <Method name="getJsonTitre" returnType="ArrayList&lt;Titre&gt;" visibility="public"/>
+        <Method name="getJsonTitreParNom" returnType="Titre" visibility="public">
+          <Argument type="String" name="nom"/>
+        </Method>
+        <Method name="getJsonTitreMotsClefs" returnType="ArrayList&lt;Titre&gt;" visibility="public">
+          <Argument type="String" name="motsClefs"/>
+        </Method>
+        <Method name="getJsonVolume" returnType="Volume" visibility="public">
+          <Argument type="String" name="nomTitre"/>
+          <Argument type="int" name="numeroVolume"/>
+        </Method>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="fr.miage.millan.presse.serveurWeb.services.ServiceRecherche" target="fr.miage.millan.presse.serveurWeb.services.ServiceRechercheLocal"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

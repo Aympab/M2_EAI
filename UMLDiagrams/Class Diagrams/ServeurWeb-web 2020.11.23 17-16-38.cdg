@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="ServeurWeb-web">
+  <ClassDiagramComponents>
+    <Class name="ApplicationConfig" package="fr.miage.millan.ws" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getClasses" returnType="Set&lt;Class&lt;?&gt;&gt;" visibility="public"/>
+        <Method name="addRestResourceClasses" returnType="void" visibility="private">
+          <Argument type="Set&lt;Class&lt;?&gt;&gt;" name="resources"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="TitreResource" package="fr.miage.millan.ws" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="serviceRecherche" type="fr.miage.millan.presse.serveurWeb.services.ServiceRechercheLocal" visibility="package"/>
+        <Field name="context" type="UriInfo" visibility="private"/>
+        <Field name="gson" type="Gson" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getJsonTitre" returnType="String" visibility="public"/>
+        <Method name="getJsonTitreParNom" returnType="String" visibility="public">
+          <Argument type="String" name="nom"/>
+        </Method>
+        <Method name="getJsonTitreParMotClef" returnType="String" visibility="public">
+          <Argument type="String" name="motclef"/>
+        </Method>
+        <Method name="getJsonVolume" returnType="String" visibility="public">
+          <Argument type="String" name="nomTitre"/>
+          <Argument type="int" name="numeroVolume"/>
+        </Method>
+        <Method name="putXml" returnType="void" visibility="public">
+          <Argument type="String" name="content"/>
+        </Method>
+        <Method name="lookupServiceRechercheLocal" returnType="fr.miage.millan.presse.serveurWeb.services.ServiceRechercheLocal" visibility="private"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>
