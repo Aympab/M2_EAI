@@ -14,6 +14,8 @@ Voici un tutoriel de mise en route du projet.
 - GlassFish 4.1.1
 - POSTMAN (ou autre)
 
+
+
 ## 1. Installer toutes les app
 Une fois le repo git cloné, il faut faire un "Build with Dependencies" sur les projet **Shared**, puis sur tous les projets **ear**.
 
@@ -43,11 +45,13 @@ create-jms-resource --restype javax.jms.ConnectionFactory CONNECTION_FACTORY_M2_
 **create-jms-resource --restype javax.jms.Topic DIFFUSION_TITRES**
 
 
+
 - Création de la base de données du serveur archivage 
 Créer une nouvelle JDBC sur le port 1527 comme URL jdbc:derby://localhost:1527/DB_M2_EAI_ARCHIVE
 User : dragon
 password : dragon
 Schema : DRAGON
+
 
 ## 3. Deployez les ear
 Clic droit > Run sur tous les projets ear
