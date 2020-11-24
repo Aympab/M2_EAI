@@ -23,15 +23,15 @@ Via la commande asadmin de glassfish, lancer les commandes suivantes :
 create-jms-resource --restype javax.jms.ConnectionFactory CONNECTION_FACTORY_M2_EAI
 
 - Création des queues et topics
-create-jms-resource --restype javax.jms.Queue ARTICLE_INIT
-create-jms-resource --restype javax.jms.Queue PRESSE_NOTIF_REDAC
-create-jms-resource --restype javax.jms.Queue PUBINIT
-create-jms-resource --restype javax.jms.Queue PRESSE_TRANSFERT_DISTRIB
-create-jms-resource --restype javax.jms.Queue PRESSE_TRANSFERT_ARCHIVE
-create-jms-resource --restype javax.jms.Queue TRANSFERT_CONTRAT
-create-jms-resource --restype javax.jms.Queue ARCHIVE_TRANSFERT_SRVWEB
-create-jms-resource --restype javax.jms.Topic DIFFUSION_DISTRIB
-create-jms-resource --restype javax.jms.Topic DIFFUSION_TITRES
+**create-jms-resource --restype javax.jms.Queue ARTICLE_INIT**
+**create-jms-resource --restype javax.jms.Queue PRESSE_NOTIF_REDAC**
+**create-jms-resource --restype javax.jms.Queue PUBINIT**
+**create-jms-resource --restype javax.jms.Queue PRESSE_TRANSFERT_DISTRIB**
+**create-jms-resource --restype javax.jms.Queue PRESSE_TRANSFERT_ARCHIVE**
+**create-jms-resource --restype javax.jms.Queue TRANSFERT_CONTRAT**
+**create-jms-resource --restype javax.jms.Queue ARCHIVE_TRANSFERT_SRVWEB**
+**create-jms-resource --restype javax.jms.Topic DIFFUSION_DISTRIB**
+**create-jms-resource --restype javax.jms.Topic DIFFUSION_TITRES**
 
 - Création de la base de données du serveur archivage 
 Créer une nouvelle JDBC sur le port 1527 comme URL jdbc:derby://localhost:1527/DB_M2_EAI_ARCHIVE
