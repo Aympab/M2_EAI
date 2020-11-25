@@ -22,7 +22,8 @@ Une fois le repo git cloné, il faut faire un "Build with Dependencies" sur les 
 ## 2. Creer les ressources JMS et la base de données 
 Via la commande asadmin de glassfish, lancer les commandes suivantes : 
 - Création de la connextion factory
-create-jms-resource --restype javax.jms.ConnectionFactory CONNECTION_FACTORY_M2_EAI
+
+**create-jms-resource --restype javax.jms.ConnectionFactory CONNECTION_FACTORY_M2_EAI**
 
 - Création des queues et topics
 
