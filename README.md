@@ -92,7 +92,7 @@ Voici un scénario d'utilisation type de l'application, une fois toutes les éta
     - http://localhost:8080/ServeurWeb-web/webresources/titre
   - Récupérer les volumes contenant des articles contenant un certain mot clé (remplacer "motClef")
     - http://localhost:8080/ServeurWeb-web/webresources/titre/titreParMotClef/motclef
-    
+  - Toutes les méthodes sont disponibles via le lien de l’API Swagger : https://app.swaggerhub.com/apis/eai9/EditeurPresse/1.0.0
 
 
 Enjoy !
