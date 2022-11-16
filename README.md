@@ -2,9 +2,9 @@
 Voici notre système d'application pour le projet d'EAI en M2 MIAGE. 
 
 Collaborateurs : 
-- Maxime BERTROU
-- Astrid GASCARD
-- Aymeric MILLAN
+- Maxime B
+- Astrid G
+- A.M.
 
 Voici un tutoriel de mise en route du projet.
 
